@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::OrderedHash</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActiveSupport::OrderedHash 
+            
+                <span class="parent">&lt; 
+                    
+                    ::Hash
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activesupport/lib/active_support/ordered_hash_rb.html">activesupport/lib/active_support/ordered_hash.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The order of iteration over hashes in Ruby 1.8 is undefined. For example,
+you do not know the order in which <tt>keys</tt> will return keys, or
+<tt>each</tt> yield pairs. <tt>ActiveSupport::OrderedHash</tt> implements a
+hash that preserves insertion order, as in Ruby 1.9:
+</p>
+<pre>
+  oh = ActiveSupport::OrderedHash.new
+  oh[:a] = 1
+  oh[:b] = 2
+  oh.keys # =&gt; [:a, :b], this order is guaranteed
+</pre>
+<p>
+<tt>ActiveSupport::OrderedHash</tt> is namespaced to prevent conflicts with
+other implementations.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003680">[]</a>,</li>
+                
+                <li><a href="#M003682">[]=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003695">clear</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003683">delete</a>,</li>
+                
+                <li><a href="#M003684">delete_if</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003693">each</a>,</li>
+                
+                <li><a href="#M003691">each_key</a>,</li>
+                
+                <li><a href="#M003694">each_pair</a>,</li>
+                
+                <li><a href="#M003692">each_value</a>,</li>
+                
+                <li><a href="#M003675">encode_with</a>,</li>
+                
+                <li><a href="#M003678">extractable_options?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003681">initialize_copy</a>,</li>
+                
+                <li><a href="#M003701">inspect</a>,</li>
+                
+                <li><a href="#M003700">invert</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003687">keys</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003698">merge</a>,</li>
+                
+                <li><a href="#M003697">merge!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003677">nested_under_indifferent_access</a>,</li>
+                
+                <li><a href="#M003679">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003686">reject</a>,</li>
+                
+                <li><a href="#M003685">reject!</a>,</li>
+                
+                <li><a href="#M003699">replace</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003696">shift</a>,</li>
+                
+                <li><a href="#M003702">sync_keys!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003690">to_a</a>,</li>
+                
+                <li><a href="#M003689">to_hash</a>,</li>
+                
+                <li><a href="#M003676">to_yaml</a>,</li>
+                
+                <li><a href="#M003674">to_yaml_type</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003688">values</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003680">
+                    
+                    <a name="M003680"></a><b>[]</b>(*args)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003680_source')" id="l_M003680_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003680_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 73</span>
+73:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+74:         <span class="ruby-identifier">ordered_hash</span> = <span class="ruby-identifier">new</span>
+75: 
+76:         <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>))
+77:           <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key_value_pair</span><span class="ruby-operator">|</span>
+78:             <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">key_value_pair</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>))
+79:             <span class="ruby-identifier">ordered_hash</span>[<span class="ruby-identifier">key_value_pair</span>[<span class="ruby-value">0</span>]] = <span class="ruby-identifier">key_value_pair</span>[<span class="ruby-value">1</span>]
+80:           <span class="ruby-keyword kw">end</span>
+81: 
+82:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ordered_hash</span>
+83:         <span class="ruby-keyword kw">end</span>
+84: 
+85:         <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+86:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;odd number of arguments for Hash&quot;</span>)
+87:         <span class="ruby-keyword kw">end</span>
+88: 
+89:         <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span>, <span class="ruby-identifier">ind</span><span class="ruby-operator">|</span>
+90:           <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">ind</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>)
+91:           <span class="ruby-identifier">ordered_hash</span>[<span class="ruby-identifier">val</span>] = <span class="ruby-identifier">args</span>[<span class="ruby-identifier">ind</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
+92:         <span class="ruby-keyword kw">end</span>
+93: 
+94:         <span class="ruby-identifier">ordered_hash</span>
+95:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003679">
+                    
+                    <a name="M003679"></a><b>new</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+In MRI the <a href="../Hash.html">Hash</a> class is core and written in C.
+In particular, methods are programmed with explicit C function calls and
+polymorphism is not honored.
+</p>
+<p>
+For example, []= is crucial in this implementation to maintain the @keys
+array but hash.c invokes rb_hash_aset() originally. This prevents method
+reuse through inheritance and forces us to reimplement stuff.
+</p>
+<p>
+For instance, we cannot use the inherited <a
+href="OrderedHash.html#M003697">merge!</a> because albeit the algorithm
+itself would work, our []= is not being called at all by the C code.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003679_source')" id="l_M003679_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003679_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 68</span>
+68:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+69:         <span class="ruby-keyword kw">super</span>
+70:         <span class="ruby-ivar">@keys</span> = []
+71:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003682">
+                    
+                    <a name="M003682"></a><b>[]=</b>(key, value)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003682_source')" id="l_M003682_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003682_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 103</span>
+103:       <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+104:         <span class="ruby-ivar">@keys</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+105:         <span class="ruby-keyword kw">super</span>
+106:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003695">
+                    
+                    <a name="M003695"></a><b>clear</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003695_source')" id="l_M003695_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L174" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003695_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 174</span>
+174:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+175:         <span class="ruby-keyword kw">super</span>
+176:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">clear</span>
+177:         <span class="ruby-keyword kw">self</span>
+178:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003683">
+                    
+                    <a name="M003683"></a><b>delete</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003683_source')" id="l_M003683_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003683_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 108</span>
+108:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+109:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
+110:           <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">key</span>)
+111:           <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
+112:         <span class="ruby-keyword kw">end</span>
+113:         <span class="ruby-keyword kw">super</span>
+114:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003684">
+                    
+                    <a name="M003684"></a><b>delete_if</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003684_source')" id="l_M003684_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003684_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 116</span>
+116:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>
+117:         <span class="ruby-keyword kw">super</span>
+118:         <span class="ruby-identifier">sync_keys!</span>
+119:         <span class="ruby-keyword kw">self</span>
+120:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003693">
+                    
+                    <a name="M003693"></a><b>each</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003693_source')" id="l_M003693_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L160" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003693_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 160</span>
+160:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+161:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">:each</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+162:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> [<span class="ruby-identifier">key</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>]]}
+163:         <span class="ruby-keyword kw">self</span>
+164:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003691">
+                    
+                    <a name="M003691"></a><b>each_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003691_source')" id="l_M003691_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L148" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003691_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 148</span>
+148:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_key</span>
+149:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">:each_key</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+150:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span> }
+151:         <span class="ruby-keyword kw">self</span>
+152:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003694">
+                    
+                    <a name="M003694"></a><b>each_pair</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003694_source')" id="l_M003694_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L166" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003694_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 166</span>
+166:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_pair</span>
+167:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">:each_pair</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+168:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>]}
+169:         <span class="ruby-keyword kw">self</span>
+170:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003692">
+                    
+                    <a name="M003692"></a><b>each_value</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003692_source')" id="l_M003692_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L154" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003692_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 154</span>
+154:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_value</span>
+155:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">to_enum</span>(<span class="ruby-identifier">:each_value</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+156:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>]}
+157:         <span class="ruby-keyword kw">self</span>
+158:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003675">
+                    
+                    <a name="M003675"></a><b>encode_with</b>(coder)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003675_source')" id="l_M003675_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003675_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encode_with</span>(<span class="ruby-identifier">coder</span>)
+29:       <span class="ruby-identifier">coder</span>.<span class="ruby-identifier">represent_seq</span> <span class="ruby-value str">'!omap'</span>, <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> { <span class="ruby-identifier">k</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v</span> } }
+30:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003678">
+                    
+                    <a name="M003678"></a><b>extractable_options?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true to make sure that this hash is extractable via <tt><a
+href="../Array.html#M003035">Array#extract_options!</a></tt>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003678_source')" id="l_M003678_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003678_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extractable_options?</span>
+52:       <span class="ruby-keyword kw">true</span>
+53:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003681">
+                    
+                    <a name="M003681"></a><b>initialize_copy</b>(other)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003681_source')" id="l_M003681_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003681_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 97</span>
+ 97:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_copy</span>(<span class="ruby-identifier">other</span>)
+ 98:         <span class="ruby-keyword kw">super</span>
+ 99:         <span class="ruby-comment cmt"># make a deep copy of keys</span>
+100:         <span class="ruby-ivar">@keys</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">keys</span>
+101:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003701">
+                    
+                    <a name="M003701"></a><b>inspect</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003701_source')" id="l_M003701_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L212" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003701_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 212</span>
+212:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+213:         <span class="ruby-node">&quot;#&lt;OrderedHash #{super}&gt;&quot;</span>
+214:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003700">
+                    
+                    <a name="M003700"></a><b>invert</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003700_source')" id="l_M003700_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L208" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003700_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 208</span>
+208:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invert</span>
+209:         <span class="ruby-constant">OrderedHash</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">map!</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key_value_pair</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key_value_pair</span>.<span class="ruby-identifier">reverse</span>}]
+210:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003687">
+                    
+                    <a name="M003687"></a><b>keys</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003687_source')" id="l_M003687_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L132" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003687_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 132</span>
+132:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+133:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">dup</span>
+134:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003698">
+                    
+                    <a name="M003698"></a><b>merge</b>(other_hash, &amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003698_source')" id="l_M003698_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L197" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003698_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 197</span>
+197:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge</span>(<span class="ruby-identifier">other_hash</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+198:         <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other_hash</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+199:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003697">
+                    
+                    <a name="M003697"></a><b>merge!</b>(other_hash)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003697_source')" id="l_M003697_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L186" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003697_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 186</span>
+186:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other_hash</span>)
+187:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+188:           <span class="ruby-identifier">other_hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">k</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">k</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>], <span class="ruby-identifier">v</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span> }
+189:         <span class="ruby-keyword kw">else</span>
+190:           <span class="ruby-identifier">other_hash</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+191:         <span class="ruby-keyword kw">end</span>
+192:         <span class="ruby-keyword kw">self</span>
+193:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003677">
+                    
+                    <a name="M003677"></a><b>nested_under_indifferent_access</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003677_source')" id="l_M003677_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003677_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nested_under_indifferent_access</span>
+47:       <span class="ruby-keyword kw">self</span>
+48:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003686">
+                    
+                    <a name="M003686"></a><b>reject</b>(&amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003686_source')" id="l_M003686_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L128" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003686_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 128</span>
+128:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+129:         <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">reject!</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+130:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003685">
+                    
+                    <a name="M003685"></a><b>reject!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003685_source')" id="l_M003685_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L122" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003685_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 122</span>
+122:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span>
+123:         <span class="ruby-keyword kw">super</span>
+124:         <span class="ruby-identifier">sync_keys!</span>
+125:         <span class="ruby-keyword kw">self</span>
+126:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003699">
+                    
+                    <a name="M003699"></a><b>replace</b>(other)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+When replacing with another hash, the initial order of our keys must come
+from the other hash -ordered or not.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003699_source')" id="l_M003699_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L202" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003699_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 202</span>
+202:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">other</span>)
+203:         <span class="ruby-keyword kw">super</span>
+204:         <span class="ruby-ivar">@keys</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">keys</span>
+205:         <span class="ruby-keyword kw">self</span>
+206:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003696">
+                    
+                    <a name="M003696"></a><b>shift</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003696_source')" id="l_M003696_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L180" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003696_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 180</span>
+180:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>
+181:         <span class="ruby-identifier">k</span> = <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">first</span>
+182:         <span class="ruby-identifier">v</span> = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+183:         [<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>]
+184:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003702">
+                    
+                    <a name="M003702"></a><b>sync_keys!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003702_source')" id="l_M003702_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L217" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003702_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 217</span>
+217:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sync_keys!</span>
+218:           <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>)}
+219:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003690">
+                    
+                    <a name="M003690"></a><b>to_a</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003690_source')" id="l_M003690_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L144" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003690_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 144</span>
+144:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+145:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> [ <span class="ruby-identifier">key</span>, <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>] ] }
+146:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003689">
+                    
+                    <a name="M003689"></a><b>to_hash</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003689_source')" id="l_M003689_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003689_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 140</span>
+140:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+141:         <span class="ruby-keyword kw">self</span>
+142:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003676">
+                    
+                    <a name="M003676"></a><b>to_yaml</b>(opts = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003676_source')" id="l_M003676_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003676_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 32</span>
+32:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>(<span class="ruby-identifier">opts</span> = {})
+33:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">:ENGINE</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-constant">ENGINE</span>.<span class="ruby-identifier">syck?</span>
+34:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">super</span>
+35:       <span class="ruby-keyword kw">end</span>
+36: 
+37:       <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">quick_emit</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">opts</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">out</span><span class="ruby-operator">|</span>
+38:         <span class="ruby-identifier">out</span>.<span class="ruby-identifier">seq</span>(<span class="ruby-identifier">taguri</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">seq</span><span class="ruby-operator">|</span>
+39:           <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+40:             <span class="ruby-identifier">seq</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">k</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v</span>)
+41:           <span class="ruby-keyword kw">end</span>
+42:         <span class="ruby-keyword kw">end</span>
+43:       <span class="ruby-keyword kw">end</span>
+44:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003674">
+                    
+                    <a name="M003674"></a><b>to_yaml_type</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003674_source')" id="l_M003674_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003674_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml_type</span>
+25:       <span class="ruby-value str">&quot;!tag:yaml.org,2002:omap&quot;</span>
+26:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003688">
+                    
+                    <a name="M003688"></a><b>values</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003688_source')" id="l_M003688_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/8cae31c800f281212c9c5b5ac0ea2be98c4aa611/activesupport/lib/active_support/ordered_hash.rb#L136" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003688_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/ordered_hash.rb, line 136</span>
+136:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+137:         <span class="ruby-ivar">@keys</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>] }
+138:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

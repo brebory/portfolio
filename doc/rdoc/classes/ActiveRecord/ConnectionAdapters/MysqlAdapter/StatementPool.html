@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::ConnectionAdapters::MysqlAdapter::StatementPool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActiveRecord::ConnectionAdapters::MysqlAdapter::StatementPool 
+            
+                <span class="parent">&lt; 
+                    
+                    ConnectionAdapters::StatementPool
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/activerecord/lib/active_record/connection_adapters/mysql_adapter_rb.html">activerecord/lib/active_record/connection_adapters/mysql_adapter.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000844">[]</a>,</li>
+                
+                <li><a href="#M000847">[]=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000848">clear</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000846">delete</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000842">each</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000843">key?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000845">length</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000841">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000841">
+                    
+                    <a name="M000841"></a><b>new</b>(connection, max = 1000)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000841_source')" id="l_M000841_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L95" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000841_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 95</span>
+95:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">connection</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">1000</span>)
+96:           <span class="ruby-keyword kw">super</span>
+97:           <span class="ruby-ivar">@cache</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>,<span class="ruby-identifier">pid</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">pid</span>] = {} }
+98:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000844">
+                    
+                    <a name="M000844"></a><b>[]</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000844_source')" id="l_M000844_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L102" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000844_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 102</span>
+102:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>);      <span class="ruby-identifier">cache</span>[<span class="ruby-identifier">key</span>]; <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000847">
+                    
+                    <a name="M000847"></a><b>[]=</b>(sql, key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000847_source')" id="l_M000847_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L106" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000847_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 106</span>
+106:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">key</span>)
+107:           <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@max</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">size</span>
+108:             <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">last</span>[<span class="ruby-identifier">:stmt</span>].<span class="ruby-identifier">close</span>
+109:           <span class="ruby-keyword kw">end</span>
+110:           <span class="ruby-identifier">cache</span>[<span class="ruby-identifier">sql</span>] = <span class="ruby-identifier">key</span>
+111:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000848">
+                    
+                    <a name="M000848"></a><b>clear</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000848_source')" id="l_M000848_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L113" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000848_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 113</span>
+113:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+114:           <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+115:             <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:stmt</span>].<span class="ruby-identifier">close</span>
+116:           <span class="ruby-keyword kw">end</span>
+117:           <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">clear</span>
+118:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000846">
+                    
+                    <a name="M000846"></a><b>delete</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000846_source')" id="l_M000846_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L104" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000846_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 104</span>
+104:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>);  <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>); <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000842">
+                    
+                    <a name="M000842"></a><b>each</b>(&amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000842_source')" id="l_M000842_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L100" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000842_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 100</span>
+100:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000843">
+                    
+                    <a name="M000843"></a><b>key?</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000843_source')" id="l_M000843_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L101" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000843_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 101</span>
+101:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>);    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>); <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000845">
+                    
+                    <a name="M000845"></a><b>length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000845_source')" id="l_M000845_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c90e5ce779dbf9bd0ee53b68aee9fde2997be123/activerecord/lib/active_record/connection_adapters/mysql_adapter.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000845_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/mysql_adapter.rb, line 103</span>
+103:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>;       <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">length</span>; <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

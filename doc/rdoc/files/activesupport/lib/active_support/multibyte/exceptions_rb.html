@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>exceptions.rb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            exceptions.rb
+        </h1>
+        <ul class="files">
+            <li>activesupport/lib/active_support/multibyte/exceptions.rb</li>
+            <li>Last modified: 2012-06-25 19:09:38 +0000</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+encoding: utf-8
+</p>
+<hr size="1"></hr><p>
+encoding: utf-8
+</p>
+<hr size="1"></hr><p>
+encoding: utf-8
+</p>
+<hr size="1"></hr><p>
+This class has dubious semantics and we only have it so that people can
+write <tt>params[:key]</tt> instead of <tt>params['key']</tt> and they get
+the same value for both keys.
+</p>
+<hr size="1"></hr><p>
+lazy_load_hooks allows rails to lazily load a lot of components and thus
+making the app boot faster. Because of this feature now there is no need to
+require <tt>ActiveRecord::Base</tt> at boot time purely to apply
+configuration. Instead a hook is registered that applies configuration once
+<tt>ActiveRecord::Base</tt> is loaded. Here <tt>ActiveRecord::Base</tt> is
+used as example but this feature can be applied elsewhere too.
+</p>
+<p>
+Here is an example where <tt>on_load</tt> method is called to register a
+hook.
+</p>
+<pre>
+  initializer &quot;active_record.initialize_timezone&quot; do
+    ActiveSupport.on_load(:active_record) do
+      self.time_zone_aware_attributes = true
+      self.default_timezone = :utc
+    end
+  end
+</pre>
+<p>
+When the entirety of <tt><a
+href="../../../../activerecord/lib/active_record/base_rb.html">activerecord/lib/active_record/base.rb</a></tt>
+has been evaluated then <tt>run_load_hooks</tt> is invoked. The very last
+line of <tt><a
+href="../../../../activerecord/lib/active_record/base_rb.html">activerecord/lib/active_record/base.rb</a></tt>
+is:
+</p>
+<pre>
+  ActiveSupport.run_load_hooks(:active_record, ActiveRecord::Base)
+</pre>
+<hr size="1"></hr><p>
+The TimeZone class serves as a wrapper around TZInfo::Timezone instances.
+It allows us to do the following:
+</p>
+<ul>
+<li>Limit the set of zones provided by TZInfo to a meaningful subset of 142
+zones.
+
+</li>
+<li>Retrieve and display zones with a friendlier name (e.g., &#8220;Eastern <a
+href="../../../../../classes/Time.html">Time</a> (US &amp; Canada)&#8221;
+instead of &#8220;America/New_York&#8220;).
+
+</li>
+<li>Lazily load TZInfo::Timezone instances only when they&#8217;re needed.
+
+</li>
+<li>Create <a
+href="../../../../../classes/ActiveSupport/TimeWithZone.html">ActiveSupport::TimeWithZone</a>
+instances via TimeZone&#8217;s <tt>local</tt>, <tt>parse</tt>, <tt>at</tt>
+and <tt>now</tt> methods.
+
+</li>
+</ul>
+<p>
+If you set <tt>config.time_zone</tt> in the <a
+href="../../../../../classes/Rails.html">Rails</a> Application, you can
+access this TimeZone object via <tt><a
+href="../../../../../classes/Time.html#M002853">Time.zone</a></tt>:
+</p>
+<pre>
+  # application.rb:
+  class Application &lt; Rails::Application
+    config.time_zone = &quot;Eastern Time (US &amp; Canada)&quot;
+  end
+
+  Time.zone       # =&gt; #&lt;TimeZone:0x514834...&gt;
+  Time.zone.name  # =&gt; &quot;Eastern Time (US &amp; Canada)&quot;
+  Time.zone.now   # =&gt; Sun, 18 May 2008 14:30:44 EDT -04:00
+</pre>
+<p>
+The version of TZInfo bundled with Active Support only includes the
+definitions necessary to support the zones defined by the TimeZone class.
+If you need to use zones that aren&#8217;t defined by TimeZone,
+you&#8217;ll need to install the TZInfo gem (if a recent version of the gem
+is installed locally, this will be used instead of the bundled version.)
+</p>
+<hr size="1"></hr><p>
+Usually key value pairs are handled something like this:
+</p>
+<pre>
+  h = {}
+  h[:boy] = 'John'
+  h[:girl] = 'Mary'
+  h[:boy]  # =&gt; 'John'
+  h[:girl] # =&gt; 'Mary'
+</pre>
+<p>
+Using <tt>OrderedOptions</tt>, the above code could be reduced to:
+</p>
+<pre>
+  h = ActiveSupport::OrderedOptions.new
+  h.boy = 'John'
+  h.girl = 'Mary'
+  h.boy  # =&gt; 'John'
+  h.girl # =&gt; 'Mary'
+</pre>
+<hr size="1"></hr><p>
+Some code from jeremymcanally&#8217;s &#8220;pending&#8221; <a
+href="https://github.com/jeremymcanally/pending/tree/master">github.com/jeremymcanally/pending/tree/master</a>
+</p>
+<hr size="1"></hr><h1>XmlMini JRuby JDOM implementation</h1>
+<hr size="1"></hr><h1>XmlMini ReXML implementation</h1>
+<hr size="1"></hr><h1>XmlMini LibXML implementation</h1>
+<hr size="1"></hr><h1>XmlMini Nokogiri implementation using a SAX-based parser</h1>
+<hr size="1"></hr><h1>XmlMini LibXML implementation using a SAX-based parser</h1>
+<hr size="1"></hr><h1>XmlMini Nokogiri implementation</h1>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="../../../../../classes/ActiveSupport.html">ActiveSupport</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>

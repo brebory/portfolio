@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionController::ParamsWrapper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActionController::ParamsWrapper 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_controller/metal/params_wrapper_rb.html">actionpack/lib/action_controller/metal/params_wrapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Wraps the parameters hash into a nested hash. This will allow clients to
+submit POST requests without having to specify any root elements.
+</p>
+<p>
+This functionality is enabled in
+<tt>config/initializers/wrap_parameters.rb</tt> and can be customized. If
+you are upgrading to Rails 3.1, this file will need to be created for the
+functionality to be enabled.
+</p>
+<p>
+You could also turn it on per controller by setting the format array to a
+non-empty array:
+</p>
+<pre>
+    class UsersController &lt; ApplicationController
+      wrap_parameters :format =&gt; [:json, :xml]
+    end
+</pre>
+<p>
+If you enable <tt>ParamsWrapper</tt> for <tt>:json</tt> format, instead of
+having to send JSON parameters like this:
+</p>
+<pre>
+    {&quot;user&quot;: {&quot;name&quot;: &quot;Konata&quot;}}
+</pre>
+<p>
+You can send parameters like this:
+</p>
+<pre>
+    {&quot;name&quot;: &quot;Konata&quot;}
+</pre>
+<p>
+And it will be wrapped into a nested hash with the key name matching the
+controller&#8217;s name. For example, if you&#8217;re posting to
+<tt>UsersController</tt>, your new <tt>params</tt> hash will look like
+this:
+</p>
+<pre>
+    {&quot;name&quot; =&gt; &quot;Konata&quot;, &quot;user&quot; =&gt; {&quot;name&quot; =&gt; &quot;Konata&quot;}}
+</pre>
+<p>
+You can also specify the key in which the parameters should be wrapped to,
+and also the list of attributes it should wrap by using either
+<tt>:include</tt> or <tt>:exclude</tt> options like this:
+</p>
+<pre>
+    class UsersController &lt; ApplicationController
+      wrap_parameters :person, :include =&gt; [:username, :password]
+    end
+</pre>
+<p>
+On ActiveRecord models with no <tt>:include</tt> or <tt>:exclude</tt>
+option set, if attr_accessible is set on that model, it will only wrap the
+accessible parameters, else it will only wrap the parameters returned by
+the class method attribute_names.
+</p>
+<p>
+If you&#8217;re going to pass the parameters to an <tt>ActiveModel</tt>
+object (such as +User.new(params[:user])+), you might consider passing the
+model class to the method instead. The <tt>ParamsWrapper</tt> will actually
+try to determine the list of attribute names from the model and only wrap
+those attributes:
+</p>
+<pre>
+    class UsersController &lt; ApplicationController
+      wrap_parameters Person
+    end
+</pre>
+<p>
+You still could pass <tt>:include</tt> and <tt>:exclude</tt> to set the
+list of attributes you want to wrap.
+</p>
+<p>
+By default, if you don&#8217;t specify the key in which the parameters
+would be wrapped to, <tt>ParamsWrapper</tt> will actually try to determine
+if there&#8217;s a model related to it or not. This controller, for
+example:
+</p>
+<pre>
+    class Admin::UsersController &lt; ApplicationController
+    end
+</pre>
+<p>
+will try to check if +Admin::User+ or <tt>User</tt> model exists, and use
+it to determine the wrapper key respectively. If both models don&#8217;t
+exist, it will then fallback to use <tt>user</tt> as the key.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001849">process_action</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="ParamsWrapper/ClassMethods.html">ActionController::ParamsWrapper::ClassMethods</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">EXCLUDE_PARAMETERS</td>
+            <td>=</td>
+            <td class="attr-value">%w(authenticity_token _method utf8)</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001849">
+                    
+                    <a name="M001849"></a><b>process_action</b>(*args)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Performs parameters wrapping upon the request. Will be called automatically
+by the metal call stack.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001849_source')" id="l_M001849_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/bfb25f9cae0a4021d86daf5c928d7e9a10bd30e3/actionpack/lib/action_controller/metal/params_wrapper.rb#L194" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001849_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_controller/metal/params_wrapper.rb, line 194</span>
+194:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_action</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+195:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">_wrapper_enabled?</span>
+196:         <span class="ruby-identifier">wrapped_hash</span> = <span class="ruby-identifier">_wrap_parameters</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_parameters</span>
+197:         <span class="ruby-identifier">wrapped_filtered_hash</span> = <span class="ruby-identifier">_wrap_parameters</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">filtered_parameters</span>
+198: 
+199:         <span class="ruby-comment cmt"># This will make the wrapped hash accessible from controller and view</span>
+200:         <span class="ruby-identifier">request</span>.<span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">wrapped_hash</span>
+201:         <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_parameters</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">wrapped_hash</span>
+202: 
+203:         <span class="ruby-comment cmt"># This will make the wrapped hash displayed in the log file</span>
+204:         <span class="ruby-identifier">request</span>.<span class="ruby-identifier">filtered_parameters</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">wrapped_filtered_hash</span>
+205:       <span class="ruby-keyword kw">end</span>
+206:       <span class="ruby-keyword kw">super</span>
+207:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

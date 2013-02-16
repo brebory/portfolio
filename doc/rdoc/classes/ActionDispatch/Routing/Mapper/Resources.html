@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Routing::Mapper::Resources</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActionDispatch::Routing::Mapper::Resources 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/actionpack/lib/action_dispatch/routing/mapper_rb.html">actionpack/lib/action_dispatch/routing/mapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Resource routing allows you to quickly declare all of the common routes for
+a given resourceful controller. Instead of declaring separate routes for
+your <tt>index</tt>, <tt>show</tt>, <tt>new</tt>, <tt>edit</tt>,
+<tt>create</tt>, <tt>update</tt> and <tt>destroy</tt> actions, a
+resourceful route declares them in a single line of code:
+</p>
+<pre>
+ resources :photos
+</pre>
+<p>
+Sometimes, you have a resource that clients always look up without
+referencing an ID. A common example, /profile always shows the profile of
+the currently logged in user. In this case, you can use a singular resource
+to map /profile (rather than /profile/:id) to the show action.
+</p>
+<pre>
+ resource :profile
+</pre>
+<p>
+It&#8217;s common to have resources that are logically children of other
+resources:
+</p>
+<pre>
+  resources :magazines do
+    resources :ads
+  end
+</pre>
+<p>
+You may wish to organize groups of controllers under a namespace. Most
+commonly, you might group a number of administrative controllers under an
+<tt>admin</tt> namespace. You would place these controllers under the
+<tt>app/controllers/admin</tt> directory, and you can group them together
+in your router:
+</p>
+<pre>
+  namespace &quot;admin&quot; do
+    resources :posts, :comments
+  end
+</pre>
+<p>
+By default the <tt>:id</tt> parameter doesn&#8217;t accept dots. If you
+need to use dots as part of the <tt>:id</tt> parameter add a constraint
+which overrides this restriction, e.g:
+</p>
+<pre>
+  resources :articles, :id =&gt; /[^\/]+/
+</pre>
+<p>
+This allows any character other than a slash as part of your <tt>:id</tt>.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002004">collection</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002011">match</a>,</li>
+                
+                <li><a href="#M002005">member</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002008">namespace</a>,</li>
+                
+                <li><a href="#M002007">nested</a>,</li>
+                
+                <li><a href="#M002006">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002002">resource</a>,</li>
+                
+                <li><a href="#M002003">resources</a>,</li>
+                
+                <li><a href="#M002001">resources_path_names</a>,</li>
+                
+                <li><a href="#M002014">root</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002009">shallow</a>,</li>
+                
+                <li><a href="#M002010">shallow?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>W</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002022">with_exclusive_scope</a>,</li>
+                
+                <li><a href="#M002030">with_scope_level</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Resources/Resource.html">ActionDispatch::Routing::Mapper::Resources::Resource</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Resources/SingletonResource.html">ActionDispatch::Routing::Mapper::Resources::SingletonResource</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">VALID_ON_OPTIONS</td>
+            <td>=</td>
+            <td class="attr-value">[:new, :collection, :member]</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+<a href="Resources.html#CANONICAL_ACTIONS">CANONICAL_ACTIONS</a> holds all
+actions that does not need a prefix or a path appended since they fit
+properly in their scope level.
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">RESOURCE_OPTIONS</td>
+            <td>=</td>
+            <td class="attr-value">[:as, :controller, :path, :only, :except]</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">CANONICAL_ACTIONS</td>
+            <td>=</td>
+            <td class="attr-value">%w(index create new show update destroy)</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002004">
+                    
+                    <a name="M002004"></a><b>collection</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+To add a route to the collection:
+</p>
+<pre>
+  resources :photos do
+    collection do
+      get 'search'
+    end
+  end
+</pre>
+<p>
+This will enable <a href="../../../Rails.html">Rails</a> to recognize paths
+such as <tt>/photos/search</tt> with GET, and route to the search action of
+<tt>PhotosController</tt>. It will also create the
+<tt>search_photos_url</tt> and <tt>search_photos_path</tt> route helpers.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002004_source')" id="l_M002004_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1164" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002004_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1164</span>
+1164:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collection</span>
+1165:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">resource_scope?</span>
+1166:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;can't use collection outside resource(s) scope&quot;</span>
+1167:           <span class="ruby-keyword kw">end</span>
+1168: 
+1169:           <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:collection</span>) <span class="ruby-keyword kw">do</span>
+1170:             <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">collection_scope</span>) <span class="ruby-keyword kw">do</span>
+1171:               <span class="ruby-keyword kw">yield</span>
+1172:             <span class="ruby-keyword kw">end</span>
+1173:           <span class="ruby-keyword kw">end</span>
+1174:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002011">
+                    
+                    <a name="M002011"></a><b>match</b>(path, *rest)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002011_source')" id="l_M002011_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1252" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002011_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1252</span>
+1252:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match</span>(<span class="ruby-identifier">path</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">rest</span>)
+1253:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rest</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">path</span>
+1254:             <span class="ruby-identifier">options</span>  = <span class="ruby-identifier">path</span>
+1255:             <span class="ruby-identifier">path</span>, <span class="ruby-identifier">to</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) }
+1256:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:to</span>] = <span class="ruby-identifier">to</span>
+1257:             <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">path</span>)
+1258:             <span class="ruby-identifier">paths</span> = [<span class="ruby-identifier">path</span>]
+1259:           <span class="ruby-keyword kw">else</span>
+1260:             <span class="ruby-identifier">options</span> = <span class="ruby-identifier">rest</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">||</span> {}
+1261:             <span class="ruby-identifier">paths</span> = [<span class="ruby-identifier">path</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">rest</span>
+1262:           <span class="ruby-keyword kw">end</span>
+1263: 
+1264:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:anchor</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">:anchor</span>)
+1265: 
+1266:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:on</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-constant">VALID_ON_OPTIONS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:on</span>])
+1267:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown scope #{on.inspect} given to :on&quot;</span>
+1268:           <span class="ruby-keyword kw">end</span>
+1269: 
+1270:           <span class="ruby-identifier">paths</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">_path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">decomposed_match</span>(<span class="ruby-identifier">_path</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>) }
+1271:           <span class="ruby-keyword kw">self</span>
+1272:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002005">
+                    
+                    <a name="M002005"></a><b>member</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+To add a member route, add a member block into the resource block:
+</p>
+<pre>
+  resources :photos do
+    member do
+      get 'preview'
+    end
+  end
+</pre>
+<p>
+This will recognize <tt>/photos/1/preview</tt> with GET, and route to the
+preview action of <tt>PhotosController</tt>. It will also create the
+<tt>preview_photo_url</tt> and <tt>preview_photo_path</tt> helpers.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002005_source')" id="l_M002005_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1187" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002005_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1187</span>
+1187:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member</span>
+1188:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">resource_scope?</span>
+1189:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;can't use member outside resource(s) scope&quot;</span>
+1190:           <span class="ruby-keyword kw">end</span>
+1191: 
+1192:           <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:member</span>) <span class="ruby-keyword kw">do</span>
+1193:             <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">member_scope</span>) <span class="ruby-keyword kw">do</span>
+1194:               <span class="ruby-keyword kw">yield</span>
+1195:             <span class="ruby-keyword kw">end</span>
+1196:           <span class="ruby-keyword kw">end</span>
+1197:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002008">
+                    
+                    <a name="M002008"></a><b>namespace</b>(path, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+See <a
+href="Scoping.html#M001984">ActionDispatch::Routing::Mapper::Scoping#namespace</a>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002008_source')" id="l_M002008_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1234" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002008_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1234</span>
+1234:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespace</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span> = {})
+1235:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">resource_scope?</span>
+1236:             <span class="ruby-identifier">nested</span> { <span class="ruby-keyword kw">super</span> }
+1237:           <span class="ruby-keyword kw">else</span>
+1238:             <span class="ruby-keyword kw">super</span>
+1239:           <span class="ruby-keyword kw">end</span>
+1240:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002007">
+                    
+                    <a name="M002007"></a><b>nested</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002007_source')" id="l_M002007_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1211" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002007_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1211</span>
+1211:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nested</span>
+1212:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">resource_scope?</span>
+1213:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;can't use nested outside resource(s) scope&quot;</span>
+1214:           <span class="ruby-keyword kw">end</span>
+1215: 
+1216:           <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:nested</span>) <span class="ruby-keyword kw">do</span>
+1217:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">shallow?</span>
+1218:               <span class="ruby-identifier">with_exclusive_scope</span> <span class="ruby-keyword kw">do</span>
+1219:                 <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:shallow_path</span>].<span class="ruby-identifier">blank?</span>
+1220:                   <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">nested_scope</span>, <span class="ruby-identifier">nested_options</span>) { <span class="ruby-keyword kw">yield</span> }
+1221:                 <span class="ruby-keyword kw">else</span>
+1222:                   <span class="ruby-identifier">scope</span>(<span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:shallow_path</span>], <span class="ruby-identifier">:as</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:shallow_prefix</span>]) <span class="ruby-keyword kw">do</span>
+1223:                     <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">nested_scope</span>, <span class="ruby-identifier">nested_options</span>) { <span class="ruby-keyword kw">yield</span> }
+1224:                   <span class="ruby-keyword kw">end</span>
+1225:                 <span class="ruby-keyword kw">end</span>
+1226:               <span class="ruby-keyword kw">end</span>
+1227:             <span class="ruby-keyword kw">else</span>
+1228:               <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">nested_scope</span>, <span class="ruby-identifier">nested_options</span>) { <span class="ruby-keyword kw">yield</span> }
+1229:             <span class="ruby-keyword kw">end</span>
+1230:           <span class="ruby-keyword kw">end</span>
+1231:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002006">
+                    
+                    <a name="M002006"></a><b>new</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002006_source')" id="l_M002006_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1199" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002006_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1199</span>
+1199:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+1200:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">resource_scope?</span>
+1201:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;can't use new outside resource(s) scope&quot;</span>
+1202:           <span class="ruby-keyword kw">end</span>
+1203: 
+1204:           <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:new</span>) <span class="ruby-keyword kw">do</span>
+1205:             <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">new_scope</span>(<span class="ruby-identifier">action_path</span>(<span class="ruby-identifier">:new</span>))) <span class="ruby-keyword kw">do</span>
+1206:               <span class="ruby-keyword kw">yield</span>
+1207:             <span class="ruby-keyword kw">end</span>
+1208:           <span class="ruby-keyword kw">end</span>
+1209:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002002">
+                    
+                    <a name="M002002"></a><b>resource</b>(*resources, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sometimes, you have a resource that clients always look up without
+referencing an ID. A common example, /profile always shows the profile of
+the currently logged in user. In this case, you can use a singular resource
+to map /profile (rather than /profile/:id) to the show action:
+</p>
+<pre>
+  resource :geocoder
+</pre>
+<p>
+creates six different routes in your application, all mapping to the
+<tt>GeoCoders</tt> controller (note that the controller is named after the
+plural):
+</p>
+<pre>
+  GET     /geocoder/new
+  POST    /geocoder
+  GET     /geocoder
+  GET     /geocoder/edit
+  PUT     /geocoder
+  DELETE  /geocoder
+</pre>
+<h3>Options</h3>
+<p>
+Takes same options as <tt>resources</tt>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002002_source')" id="l_M002002_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L984" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002002_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 984</span>
+ 984:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">resources</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+ 985:           <span class="ruby-identifier">options</span> = <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">extract_options!</span>
+ 986: 
+ 987:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">apply_common_behavior_for</span>(<span class="ruby-identifier">:resource</span>, <span class="ruby-identifier">resources</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+ 988:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+ 989:           <span class="ruby-keyword kw">end</span>
+ 990: 
+ 991:           <span class="ruby-identifier">resource_scope</span>(<span class="ruby-identifier">:resource</span>, <span class="ruby-constant">SingletonResource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">options</span>)) <span class="ruby-keyword kw">do</span>
+ 992:             <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+ 993: 
+ 994:             <span class="ruby-identifier">collection</span> <span class="ruby-keyword kw">do</span>
+ 995:               <span class="ruby-identifier">post</span> <span class="ruby-identifier">:create</span>
+ 996:             <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:create</span>)
+ 997: 
+ 998:             <span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+ 999:               <span class="ruby-identifier">get</span> <span class="ruby-identifier">:new</span>
+1000:             <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:new</span>)
+1001: 
+1002:             <span class="ruby-identifier">member</span> <span class="ruby-keyword kw">do</span>
+1003:               <span class="ruby-identifier">get</span>    <span class="ruby-identifier">:edit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:edit</span>)
+1004:               <span class="ruby-identifier">get</span>    <span class="ruby-identifier">:show</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:show</span>)
+1005:               <span class="ruby-identifier">put</span>    <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:update</span>)
+1006:               <span class="ruby-identifier">delete</span> <span class="ruby-identifier">:destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:destroy</span>)
+1007:             <span class="ruby-keyword kw">end</span>
+1008:           <span class="ruby-keyword kw">end</span>
+1009: 
+1010:           <span class="ruby-keyword kw">self</span>
+1011:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002003">
+                    
+                    <a name="M002003"></a><b>resources</b>(*resources, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+In <a href="../../../Rails.html">Rails</a>, a resourceful route provides a
+mapping between HTTP verbs and URLs and controller actions. By convention,
+each action also maps to particular CRUD operations in a database. A single
+entry in the routing file, such as
+</p>
+<pre>
+  resources :photos
+</pre>
+<p>
+creates seven different routes in your application, all mapping to the
+<tt>Photos</tt> controller:
+</p>
+<pre>
+  GET     /photos
+  GET     /photos/new
+  POST    /photos
+  GET     /photos/:id
+  GET     /photos/:id/edit
+  PUT     /photos/:id
+  DELETE  /photos/:id
+</pre>
+<p>
+<a href="Resources.html">Resources</a> can also be nested infinitely by
+using this block syntax:
+</p>
+<pre>
+  resources :photos do
+    resources :comments
+  end
+</pre>
+<p>
+This generates the following comments routes:
+</p>
+<pre>
+  GET     /photos/:photo_id/comments
+  GET     /photos/:photo_id/comments/new
+  POST    /photos/:photo_id/comments
+  GET     /photos/:photo_id/comments/:id
+  GET     /photos/:photo_id/comments/:id/edit
+  PUT     /photos/:photo_id/comments/:id
+  DELETE  /photos/:photo_id/comments/:id
+</pre>
+<h3>Options</h3>
+<p>
+Takes same options as <tt><a href="Base.html#M001970">Base#match</a></tt>
+as well as:
+</p>
+<dl>
+<dt>:path_names</dt><dd>Allows you to change the segment component of the <tt>edit</tt> and
+<tt>new</tt> actions. Actions not specified are not changed.
+
+<pre>
+  resources :posts, :path_names =&gt; { :new =&gt; &quot;brand_new&quot; }
+</pre>
+<p>
+The above example will now change /posts/new to /posts/brand_new
+</p>
+</dd>
+<dt>:path</dt><dd>Allows you to change the path prefix for the resource.
+
+<pre>
+  resources :posts, :path =&gt; 'postings'
+</pre>
+<p>
+The resource and all segments will now route to /postings instead of /posts
+</p>
+</dd>
+<dt>:only</dt><dd>Only generate routes for the given actions.
+
+<pre>
+  resources :cows, :only =&gt; :show
+  resources :cows, :only =&gt; [:show, :index]
+</pre>
+</dd>
+<dt>:except</dt><dd>Generate all routes except for the given actions.
+
+<pre>
+  resources :cows, :except =&gt; :show
+  resources :cows, :except =&gt; [:show, :index]
+</pre>
+</dd>
+<dt>:shallow</dt><dd>Generates shallow routes for nested resource(s). When placed on a parent
+resource, generates shallow routes for all nested resources.
+
+<pre>
+  resources :posts, :shallow =&gt; true do
+    resources :comments
+  end
+</pre>
+<p>
+Is the same as:
+</p>
+<pre>
+  resources :posts do
+    resources :comments, :except =&gt; [:show, :edit, :update, :destroy]
+  end
+  resources :comments, :only =&gt; [:show, :edit, :update, :destroy]
+</pre>
+<p>
+This allows URLs for resources that otherwise would be deeply nested such
+as a comment on a blog post like
+<tt>/posts/a-long-permalink/comments/1234</tt> to be shortened to just
+<tt>/comments/1234</tt>.
+</p>
+</dd>
+<dt>:shallow_path</dt><dd>Prefixes nested shallow routes with the specified path.
+
+<pre>
+  scope :shallow_path =&gt; &quot;sekret&quot; do
+    resources :posts do
+      resources :comments, :shallow =&gt; true
+    end
+  end
+</pre>
+<p>
+The <tt>comments</tt> resource here will have the following routes
+generated for it:
+</p>
+<pre>
+  post_comments    GET    /posts/:post_id/comments(.:format)
+  post_comments    POST   /posts/:post_id/comments(.:format)
+  new_post_comment GET    /posts/:post_id/comments/new(.:format)
+  edit_comment     GET    /sekret/comments/:id/edit(.:format)
+  comment          GET    /sekret/comments/:id(.:format)
+  comment          PUT    /sekret/comments/:id(.:format)
+  comment          DELETE /sekret/comments/:id(.:format)
+</pre>
+</dd>
+</dl>
+<h3>Examples</h3>
+<pre>
+  # routes call &lt;tt&gt;Admin::PostsController&lt;/tt&gt;
+  resources :posts, :module =&gt; &quot;admin&quot;
+
+  # resource actions are at /admin/posts.
+  resources :posts, :path =&gt; &quot;admin/posts&quot;
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002003_source')" id="l_M002003_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1122" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002003_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1122</span>
+1122:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resources</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">resources</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+1123:           <span class="ruby-identifier">options</span> = <span class="ruby-identifier">resources</span>.<span class="ruby-identifier">extract_options!</span>
+1124: 
+1125:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">apply_common_behavior_for</span>(<span class="ruby-identifier">:resources</span>, <span class="ruby-identifier">resources</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+1126:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+1127:           <span class="ruby-keyword kw">end</span>
+1128: 
+1129:           <span class="ruby-identifier">resource_scope</span>(<span class="ruby-identifier">:resources</span>, <span class="ruby-constant">Resource</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-identifier">options</span>)) <span class="ruby-keyword kw">do</span>
+1130:             <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+1131: 
+1132:             <span class="ruby-identifier">collection</span> <span class="ruby-keyword kw">do</span>
+1133:               <span class="ruby-identifier">get</span>  <span class="ruby-identifier">:index</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:index</span>)
+1134:               <span class="ruby-identifier">post</span> <span class="ruby-identifier">:create</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:create</span>)
+1135:             <span class="ruby-keyword kw">end</span>
+1136: 
+1137:             <span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+1138:               <span class="ruby-identifier">get</span> <span class="ruby-identifier">:new</span>
+1139:             <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:new</span>)
+1140: 
+1141:             <span class="ruby-identifier">member</span> <span class="ruby-keyword kw">do</span>
+1142:               <span class="ruby-identifier">get</span>    <span class="ruby-identifier">:edit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:edit</span>)
+1143:               <span class="ruby-identifier">get</span>    <span class="ruby-identifier">:show</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:show</span>)
+1144:               <span class="ruby-identifier">put</span>    <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:update</span>)
+1145:               <span class="ruby-identifier">delete</span> <span class="ruby-identifier">:destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">actions</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:destroy</span>)
+1146:             <span class="ruby-keyword kw">end</span>
+1147:           <span class="ruby-keyword kw">end</span>
+1148: 
+1149:           <span class="ruby-keyword kw">self</span>
+1150:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002001">
+                    
+                    <a name="M002001"></a><b>resources_path_names</b>(options)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002001_source')" id="l_M002001_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L959" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002001_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 959</span>
+959:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resources_path_names</span>(<span class="ruby-identifier">options</span>)
+960:           <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:path_names</span>].<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+961:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002014">
+                    
+                    <a name="M002014"></a><b>root</b>(options={})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002014_source')" id="l_M002014_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1309" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002014_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1309</span>
+1309:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">root</span>(<span class="ruby-identifier">options</span>={})
+1310:           <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:resources</span>
+1311:             <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:root</span>) <span class="ruby-keyword kw">do</span>
+1312:               <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">path</span>) <span class="ruby-keyword kw">do</span>
+1313:                 <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">options</span>)
+1314:               <span class="ruby-keyword kw">end</span>
+1315:             <span class="ruby-keyword kw">end</span>
+1316:           <span class="ruby-keyword kw">else</span>
+1317:             <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">options</span>)
+1318:           <span class="ruby-keyword kw">end</span>
+1319:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002009">
+                    
+                    <a name="M002009"></a><b>shallow</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002009_source')" id="l_M002009_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1242" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002009_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1242</span>
+1242:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shallow</span>
+1243:           <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">:shallow</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:shallow_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:path</span>]) <span class="ruby-keyword kw">do</span>
+1244:             <span class="ruby-keyword kw">yield</span>
+1245:           <span class="ruby-keyword kw">end</span>
+1246:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002010">
+                    
+                    <a name="M002010"></a><b>shallow?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002010_source')" id="l_M002010_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1248" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002010_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1248</span>
+1248:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shallow?</span>
+1249:           <span class="ruby-identifier">parent_resource</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">Resource</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:shallow</span>]
+1250:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002022">
+                    
+                    <a name="M002022"></a><b>with_exclusive_scope</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002022_source')" id="l_M002022_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1377" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002022_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1377</span>
+1377:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_exclusive_scope</span>
+1378:             <span class="ruby-keyword kw">begin</span>
+1379:               <span class="ruby-identifier">old_name_prefix</span>, <span class="ruby-identifier">old_path</span> = <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:as</span>], <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:path</span>]
+1380:               <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:as</span>], <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:path</span>] = <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+1381: 
+1382:               <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">:exclusive</span>) <span class="ruby-keyword kw">do</span>
+1383:                 <span class="ruby-keyword kw">yield</span>
+1384:               <span class="ruby-keyword kw">end</span>
+1385:             <span class="ruby-keyword kw">ensure</span>
+1386:               <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:as</span>], <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:path</span>] = <span class="ruby-identifier">old_name_prefix</span>, <span class="ruby-identifier">old_path</span>
+1387:             <span class="ruby-keyword kw">end</span>
+1388:           <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002030">
+                    
+                    <a name="M002030"></a><b>with_scope_level</b>(kind, resource = parent_resource)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002030_source')" id="l_M002030_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L1390" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002030_source" class="dyn-source">
+                        <pre>      <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 1390</span>
+1390:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_scope_level</span>(<span class="ruby-identifier">kind</span>, <span class="ruby-identifier">resource</span> = <span class="ruby-identifier">parent_resource</span>)
+1391:             <span class="ruby-identifier">old</span>, <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level</span>] = <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level</span>], <span class="ruby-identifier">kind</span>
+1392:             <span class="ruby-identifier">old_resource</span>, <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level_resource</span>] = <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level_resource</span>], <span class="ruby-identifier">resource</span>
+1393:             <span class="ruby-keyword kw">yield</span>
+1394:           <span class="ruby-keyword kw">ensure</span>
+1395:             <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level</span>] = <span class="ruby-identifier">old</span>
+1396:             <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">:scope_level_resource</span>] = <span class="ruby-identifier">old_resource</span>
+1397:           <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

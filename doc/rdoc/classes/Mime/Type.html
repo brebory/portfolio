@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mime::Type</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Mime::Type 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_dispatch/http/mime_type_rb.html">actionpack/lib/action_dispatch/http/mime_type.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Encapsulates the notion of a mime type. Can be used at render time, for
+example, with:
+</p>
+<pre>
+  class PostsController &lt; ActionController::Base
+    def show
+      @post = Post.find(params[:id])
+
+      respond_to do |format|
+        format.html
+        format.ics { render :text =&gt; post.to_ics, :mime_type =&gt; Mime::Type[&quot;text/calendar&quot;]  }
+        format.xml { render :xml =&gt; @people.to_xml }
+      end
+    end
+  end
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002203">==</a>,</li>
+                
+                <li><a href="#M002202">===</a>,</li>
+                
+                <li><a href="#M002204">=~</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002206">html?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002190">lookup</a>,</li>
+                
+                <li><a href="#M002191">lookup_by_extension</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002197">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002194">parse</a>,</li>
+                
+                <li><a href="#M002195">parse_data_with_trailing_star</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002201">ref</a>,</li>
+                
+                <li><a href="#M002193">register</a>,</li>
+                
+                <li><a href="#M002192">register_alias</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002198">to_s</a>,</li>
+                
+                <li><a href="#M002199">to_str</a>,</li>
+                
+                <li><a href="#M002200">to_sym</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002196">unregister</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002205">verify_request?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Type/AcceptItem.html">Mime::Type::AcceptItem</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">TRAILING_STAR_REGEXP</td>
+            <td>=</td>
+            <td class="attr-value">/(text|application)\/\*/</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">Q_SEPARATOR_REGEXP</td>
+            <td>=</td>
+            <td class="attr-value">/;\s*q=/</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>symbol</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002190">
+                    
+                    <a name="M002190"></a><b>lookup</b>(string)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002190_source')" id="l_M002190_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L88" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002190_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 88</span>
+88:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">string</span>)
+89:         <span class="ruby-constant">LOOKUP</span>[<span class="ruby-identifier">string</span>]
+90:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002191">
+                    
+                    <a name="M002191"></a><b>lookup_by_extension</b>(extension)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002191_source')" id="l_M002191_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002191_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 92</span>
+92:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lookup_by_extension</span>(<span class="ruby-identifier">extension</span>)
+93:         <span class="ruby-constant">EXTENSION_LOOKUP</span>[<span class="ruby-identifier">extension</span>.<span class="ruby-identifier">to_s</span>]
+94:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002197">
+                    
+                    <a name="M002197"></a><b>new</b>(string, symbol = nil, synonyms = [])
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002197_source')" id="l_M002197_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L208" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002197_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 208</span>
+208:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">symbol</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">synonyms</span> = [])
+209:       <span class="ruby-ivar">@symbol</span>, <span class="ruby-ivar">@synonyms</span> = <span class="ruby-identifier">symbol</span>, <span class="ruby-identifier">synonyms</span>
+210:       <span class="ruby-ivar">@string</span> = <span class="ruby-identifier">string</span>
+211:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002194">
+                    
+                    <a name="M002194"></a><b>parse</b>(accept_header)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002194_source')" id="l_M002194_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L111" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002194_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 111</span>
+111:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">accept_header</span>)
+112:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">accept_header</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/,/</span>
+113:           <span class="ruby-identifier">accept_header</span> = <span class="ruby-identifier">accept_header</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">Q_SEPARATOR_REGEXP</span>).<span class="ruby-identifier">first</span>
+114:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">accept_header</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">TRAILING_STAR_REGEXP</span>
+115:             <span class="ruby-identifier">parse_data_with_trailing_star</span>(<span class="ruby-identifier">$1</span>)
+116:           <span class="ruby-keyword kw">else</span>
+117:             [<span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">Type</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">accept_header</span>)]
+118:           <span class="ruby-keyword kw">end</span>
+119:         <span class="ruby-keyword kw">else</span>
+120:           <span class="ruby-comment cmt"># keep track of creation order to keep the subsequent sort stable</span>
+121:           <span class="ruby-identifier">list</span>, <span class="ruby-identifier">index</span> = [], <span class="ruby-value">0</span>
+122:           <span class="ruby-identifier">accept_header</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">header</span><span class="ruby-operator">|</span>
+123:             <span class="ruby-identifier">params</span>, <span class="ruby-identifier">q</span> = <span class="ruby-identifier">header</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">Q_SEPARATOR_REGEXP</span>)
+124:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">present?</span>
+125:               <span class="ruby-identifier">params</span>.<span class="ruby-identifier">strip!</span>
+126: 
+127:               <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">TRAILING_STAR_REGEXP</span>
+128:                 <span class="ruby-identifier">parse_data_with_trailing_star</span>(<span class="ruby-identifier">$1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+129:                   <span class="ruby-identifier">list</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">AcceptItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">q</span>)
+130:                   <span class="ruby-identifier">index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+131:                 <span class="ruby-keyword kw">end</span>
+132:               <span class="ruby-keyword kw">else</span>
+133:                 <span class="ruby-identifier">list</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">AcceptItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">q</span>)
+134:                 <span class="ruby-identifier">index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+135:               <span class="ruby-keyword kw">end</span>
+136:             <span class="ruby-keyword kw">end</span>
+137:           <span class="ruby-keyword kw">end</span>
+138:           <span class="ruby-identifier">list</span>.<span class="ruby-identifier">sort!</span>
+139: 
+140:           <span class="ruby-comment cmt"># Take care of the broken text/xml entry by renaming or deleting it</span>
+141:           <span class="ruby-identifier">text_xml</span> = <span class="ruby-identifier">list</span>.<span class="ruby-identifier">index</span>(<span class="ruby-value str">&quot;text/xml&quot;</span>)
+142:           <span class="ruby-identifier">app_xml</span> = <span class="ruby-identifier">list</span>.<span class="ruby-identifier">index</span>(<span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span>.<span class="ruby-identifier">to_s</span>)
+143: 
+144:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text_xml</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">app_xml</span>
+145:             <span class="ruby-comment cmt"># set the q value to the max of the two</span>
+146:             <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>].<span class="ruby-identifier">q</span> = [<span class="ruby-identifier">list</span>[<span class="ruby-identifier">text_xml</span>].<span class="ruby-identifier">q</span>, <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>].<span class="ruby-identifier">q</span>].<span class="ruby-identifier">max</span>
+147: 
+148:             <span class="ruby-comment cmt"># make sure app_xml is ahead of text_xml in the list</span>
+149:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">app_xml</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">text_xml</span>
+150:               <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>], <span class="ruby-identifier">list</span>[<span class="ruby-identifier">text_xml</span>] = <span class="ruby-identifier">list</span>[<span class="ruby-identifier">text_xml</span>], <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>]
+151:               <span class="ruby-identifier">app_xml</span>, <span class="ruby-identifier">text_xml</span> = <span class="ruby-identifier">text_xml</span>, <span class="ruby-identifier">app_xml</span>
+152:             <span class="ruby-keyword kw">end</span>
+153: 
+154:             <span class="ruby-comment cmt"># delete text_xml from the list</span>
+155:             <span class="ruby-identifier">list</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">text_xml</span>)
+156: 
+157:           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">text_xml</span>
+158:             <span class="ruby-identifier">list</span>[<span class="ruby-identifier">text_xml</span>].<span class="ruby-identifier">name</span> = <span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span>.<span class="ruby-identifier">to_s</span>
+159:           <span class="ruby-keyword kw">end</span>
+160: 
+161:           <span class="ruby-comment cmt"># Look for more specific XML-based types and sort them ahead of app/xml</span>
+162: 
+163:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">app_xml</span>
+164:             <span class="ruby-identifier">idx</span> = <span class="ruby-identifier">app_xml</span>
+165:             <span class="ruby-identifier">app_xml_type</span> = <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>]
+166: 
+167:             <span class="ruby-keyword kw">while</span>(<span class="ruby-identifier">idx</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">length</span>)
+168:               <span class="ruby-identifier">type</span> = <span class="ruby-identifier">list</span>[<span class="ruby-identifier">idx</span>]
+169:               <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">q</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">app_xml_type</span>.<span class="ruby-identifier">q</span>
+170:               <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\+xml$/</span>
+171:                 <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>], <span class="ruby-identifier">list</span>[<span class="ruby-identifier">idx</span>] = <span class="ruby-identifier">list</span>[<span class="ruby-identifier">idx</span>], <span class="ruby-identifier">list</span>[<span class="ruby-identifier">app_xml</span>]
+172:                 <span class="ruby-identifier">app_xml</span> = <span class="ruby-identifier">idx</span>
+173:               <span class="ruby-keyword kw">end</span>
+174:               <span class="ruby-identifier">idx</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+175:             <span class="ruby-keyword kw">end</span>
+176:           <span class="ruby-keyword kw">end</span>
+177: 
+178:           <span class="ruby-identifier">list</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">Type</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">name</span>) }.<span class="ruby-identifier">uniq!</span>
+179:           <span class="ruby-identifier">list</span>
+180:         <span class="ruby-keyword kw">end</span>
+181:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002195">
+                    
+                    <a name="M002195"></a><b>parse_data_with_trailing_star</b>(input)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+input: &#8216;text&#8217; returned value: [Mime::JSON, Mime::XML,
+Mime::ICS, Mime::HTML, Mime::CSS, Mime::CSV, Mime::JS, Mime::YAML,
+Mime::TEXT]
+</p>
+<p>
+input: &#8216;application&#8217; returned value: [Mime::HTML, Mime::JS,
+Mime::XML, Mime::YAML, Mime::ATOM, Mime::JSON, Mime::RSS,
+Mime::URL_ENCODED_FORM]
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002195_source')" id="l_M002195_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L188" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002195_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 188</span>
+188:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_data_with_trailing_star</span>(<span class="ruby-identifier">input</span>)
+189:         <span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">SET</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">input</span> }
+190:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002193">
+                    
+                    <a name="M002193"></a><b>register</b>(string, symbol, mime_type_synonyms = [], extension_synonyms = [], skip_lookup = false)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002193_source')" id="l_M002193_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L102" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002193_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 102</span>
+102:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">symbol</span>, <span class="ruby-identifier">mime_type_synonyms</span> = [], <span class="ruby-identifier">extension_synonyms</span> = [], <span class="ruby-identifier">skip_lookup</span> = <span class="ruby-keyword kw">false</span>)
+103:         <span class="ruby-constant">Mime</span>.<span class="ruby-identifier">const_set</span>(<span class="ruby-identifier">symbol</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>, <span class="ruby-constant">Type</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">symbol</span>, <span class="ruby-identifier">mime_type_synonyms</span>))
+104: 
+105:         <span class="ruby-constant">SET</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Mime</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">symbol</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>)
+106: 
+107:         ([<span class="ruby-identifier">string</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">mime_type_synonyms</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">str</span><span class="ruby-operator">|</span> <span class="ruby-constant">LOOKUP</span>[<span class="ruby-identifier">str</span>] = <span class="ruby-constant">SET</span>.<span class="ruby-identifier">last</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">skip_lookup</span>
+108:         ([<span class="ruby-identifier">symbol</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">extension_synonyms</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span> <span class="ruby-constant">EXTENSION_LOOKUP</span>[<span class="ruby-identifier">ext</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-constant">SET</span>.<span class="ruby-identifier">last</span> }
+109:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002192">
+                    
+                    <a name="M002192"></a><b>register_alias</b>(string, symbol, extension_synonyms = [])
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Registers an alias that&#8217;s not used on mime type lookup, but can be
+referenced directly. Especially useful for rendering different HTML
+versions depending on the user agent, like an iPhone.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002192_source')" id="l_M002192_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L98" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002192_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 98</span>
+ 98:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_alias</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">symbol</span>, <span class="ruby-identifier">extension_synonyms</span> = [])
+ 99:         <span class="ruby-identifier">register</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">symbol</span>, [], <span class="ruby-identifier">extension_synonyms</span>, <span class="ruby-keyword kw">true</span>)
+100:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002196">
+                    
+                    <a name="M002196"></a><b>unregister</b>(symbol)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+This method is opposite of register method.
+</p>
+<p>
+Usage:
+</p>
+<p>
+<a href="Type.html#M002196">Mime::Type.unregister</a>(:mobile)
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002196_source')" id="l_M002196_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L197" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002196_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 197</span>
+197:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unregister</span>(<span class="ruby-identifier">symbol</span>)
+198:         <span class="ruby-identifier">symbol</span> = <span class="ruby-identifier">symbol</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+199:         <span class="ruby-identifier">mime</span> = <span class="ruby-constant">Mime</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">symbol</span>)
+200:         <span class="ruby-constant">Mime</span>.<span class="ruby-identifier">instance_eval</span> { <span class="ruby-identifier">remove_const</span>(<span class="ruby-identifier">symbol</span>) }
+201: 
+202:         <span class="ruby-constant">SET</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">mime</span>) }
+203:         <span class="ruby-constant">LOOKUP</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">mime</span>) }
+204:         <span class="ruby-constant">EXTENSION_LOOKUP</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">mime</span>) }
+205:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002203">
+                    
+                    <a name="M002203"></a><b>==</b>(mime_type)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002203_source')" id="l_M002203_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L237" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002203_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 237</span>
+237:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">mime_type</span>)
+238:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">blank?</span>
+239:       (<span class="ruby-ivar">@synonyms</span> <span class="ruby-operator">+</span> [ <span class="ruby-keyword kw">self</span> ]).<span class="ruby-identifier">any?</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">synonym</span><span class="ruby-operator">|</span>
+240:         <span class="ruby-identifier">synonym</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">synonym</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">to_sym</span>
+241:       <span class="ruby-keyword kw">end</span>
+242:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002202">
+                    
+                    <a name="M002202"></a><b>===</b>(list)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002202_source')" id="l_M002202_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L229" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002202_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 229</span>
+229:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">===</span>(<span class="ruby-identifier">list</span>)
+230:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+231:         (<span class="ruby-ivar">@synonyms</span> <span class="ruby-operator">+</span> [ <span class="ruby-keyword kw">self</span> ]).<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">synonym</span><span class="ruby-operator">|</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">synonym</span>) }
+232:       <span class="ruby-keyword kw">else</span>
+233:         <span class="ruby-keyword kw">super</span>
+234:       <span class="ruby-keyword kw">end</span>
+235:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002204">
+                    
+                    <a name="M002204"></a><b>=~</b>(mime_type)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002204_source')" id="l_M002204_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L244" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002204_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 244</span>
+244:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">=~</span>(<span class="ruby-identifier">mime_type</span>)
+245:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">blank?</span>
+246:       <span class="ruby-identifier">regexp</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">quote</span>(<span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">to_s</span>))
+247:       (<span class="ruby-ivar">@synonyms</span> <span class="ruby-operator">+</span> [ <span class="ruby-keyword kw">self</span> ]).<span class="ruby-identifier">any?</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">synonym</span><span class="ruby-operator">|</span>
+248:         <span class="ruby-identifier">synonym</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">regexp</span>
+249:       <span class="ruby-keyword kw">end</span>
+250:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002206">
+                    
+                    <a name="M002206"></a><b>html?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002206_source')" id="l_M002206_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L258" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002206_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 258</span>
+258:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">html?</span>
+259:       <span class="ruby-ivar">@@html_types</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">to_sym</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@string</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/html/</span>
+260:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002201">
+                    
+                    <a name="M002201"></a><b>ref</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002201_source')" id="l_M002201_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L225" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002201_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 225</span>
+225:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ref</span>
+226:       <span class="ruby-identifier">to_sym</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">to_s</span>
+227:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002198">
+                    
+                    <a name="M002198"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002198_source')" id="l_M002198_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L213" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002198_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 213</span>
+213:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+214:       <span class="ruby-ivar">@string</span>
+215:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002199">
+                    
+                    <a name="M002199"></a><b>to_str</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002199_source')" id="l_M002199_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L217" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002199_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 217</span>
+217:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_str</span>
+218:       <span class="ruby-identifier">to_s</span>
+219:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002200">
+                    
+                    <a name="M002200"></a><b>to_sym</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002200_source')" id="l_M002200_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L221" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002200_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 221</span>
+221:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_sym</span>
+222:       <span class="ruby-ivar">@symbol</span>
+223:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002205">
+                    
+                    <a name="M002205"></a><b>verify_request?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true if Action Pack should check requests using this <a
+href="../Mime.html">Mime</a> <a href="Type.html">Type</a> for possible
+request forgery. See <a
+href="../ActionController/RequestForgeryProtection.html">ActionController::RequestForgeryProtection</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002205_source')" id="l_M002205_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/dffd85a1922d4169311f98d7560564d4356f8631/actionpack/lib/action_dispatch/http/mime_type.rb#L254" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002205_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/http/mime_type.rb, line 254</span>
+254:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_request?</span>
+255:       <span class="ruby-ivar">@@browser_generated_types</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">to_sym</span>)
+256:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

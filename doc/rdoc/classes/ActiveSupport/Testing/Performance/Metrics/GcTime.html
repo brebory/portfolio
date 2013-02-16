@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::Testing::Performance::Metrics::GcTime</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActiveSupport::Testing::Performance::Metrics::GcTime 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../../Time.html">Time</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../../files/activesupport/lib/active_support/testing/performance/ruby/yarv_rb.html">activesupport/lib/active_support/testing/performance/ruby/yarv.rb</a></li>
+            
+            <li><a href="../../../../../files/activesupport/lib/active_support/testing/performance/ruby/mri_rb.html">activesupport/lib/active_support/testing/performance/ruby/mri.rb</a></li>
+            
+            <li><a href="../../../../../files/activesupport/lib/active_support/testing/performance/ruby_rb.html">activesupport/lib/active_support/testing/performance/ruby.rb</a></li>
+            
+            <li><a href="../../../../../files/activesupport/lib/active_support/testing/performance/jruby_rb.html">activesupport/lib/active_support/testing/performance/jruby.rb</a></li>
+            
+            <li><a href="../../../../../files/activesupport/lib/active_support/testing/performance/rubinius_rb.html">activesupport/lib/active_support/testing/performance/rubinius.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003735">measure</a>,</li>
+                
+                <li><a href="#M003740">measure</a>,</li>
+                
+                <li><a href="#M003765">measure</a>,</li>
+                
+                <li><a href="#M003777">measure</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">Mode</td>
+            <td>=</td>
+            <td class="attr-value">RubyProf::GC_TIME if RubyProf.const_defined?(:GC_TIME)</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003735">
+                    
+                    <a name="M003735"></a><b>measure</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003735_source')" id="l_M003735_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c2c8ef57d6f00d1c22743dc43746f95704d67a95/activesupport/lib/active_support/testing/performance/ruby/yarv.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003735_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/testing/performance/ruby/yarv.rb, line 49</span>
+49:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">measure</span>
+50:               <span class="ruby-constant">GC</span><span class="ruby-operator">::</span><span class="ruby-constant">Profiler</span>.<span class="ruby-identifier">total_time</span>
+51:             <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003740">
+                    
+                    <a name="M003740"></a><b>measure</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003740_source')" id="l_M003740_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c2c8ef57d6f00d1c22743dc43746f95704d67a95/activesupport/lib/active_support/testing/performance/ruby/mri.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003740_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/testing/performance/ruby/mri.rb, line 49</span>
+49:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">measure</span>
+50:               <span class="ruby-constant">RubyProf</span>.<span class="ruby-identifier">measure_gc_time</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000.0</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000.0</span>
+51:             <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003765">
+                    
+                    <a name="M003765"></a><b>measure</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003765_source')" id="l_M003765_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c2c8ef57d6f00d1c22743dc43746f95704d67a95/activesupport/lib/active_support/testing/performance/jruby.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003765_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/testing/performance/jruby.rb, line 108</span>
+108:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">measure</span>
+109:             <span class="ruby-constant">ManagementFactory</span>.<span class="ruby-identifier">garbage_collector_mx_beans</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">total_time</span>, <span class="ruby-identifier">current_gc</span><span class="ruby-operator">|</span> <span class="ruby-identifier">total_time</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">current_gc</span>.<span class="ruby-identifier">collection_time</span> } <span class="ruby-operator">/</span> <span class="ruby-value">1000.0</span> <span class="ruby-comment cmt"># seconds</span>
+110:           <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003777">
+                    
+                    <a name="M003777"></a><b>measure</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003777_source')" id="l_M003777_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c2c8ef57d6f00d1c22743dc43746f95704d67a95/activesupport/lib/active_support/testing/performance/rubinius.rb#L106" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003777_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/testing/performance/rubinius.rb, line 106</span>
+106:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">measure</span>
+107:             (<span class="ruby-identifier">loopback</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">&quot;system.gc.full.wallclock&quot;</span>).<span class="ruby-identifier">last</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">loopback</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">&quot;system.gc.young.wallclock&quot;</span>).<span class="ruby-identifier">last</span>) <span class="ruby-operator">/</span> <span class="ruby-value">1000.0</span>
+108:           <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

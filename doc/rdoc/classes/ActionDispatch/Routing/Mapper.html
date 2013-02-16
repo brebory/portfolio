@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Routing::Mapper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::Routing::Mapper 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/actionpack/lib/action_dispatch/routing/mapper_rb.html">actionpack/lib/action_dispatch/routing/mapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001968">normalize_name</a>,</li>
+                
+                <li><a href="#M001967">normalize_path</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../../Erb/Generators.html">Erb::Generators</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="Mapper/Base.html">ActionDispatch::Routing::Mapper::Base</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="../../ActiveResource.html">ActiveResource</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="../../ActiveRecord.html">ActiveRecord</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="Mapper/Base.html">ActionDispatch::Routing::Mapper::Base</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="Mapper/Base.html">ActionDispatch::Routing::Mapper::Base</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="Mapper/HttpHelpers.html">ActionDispatch::Routing::Mapper::HttpHelpers</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="Mapper/Resources.html">ActionDispatch::Routing::Mapper::Resources</a></li>
+        
+        <li><span class="type">MODULE</span> <a href="Mapper/Scoping.html">ActionDispatch::Routing::Mapper::Scoping</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Mapper/Constraints.html">ActionDispatch::Routing::Mapper::Constraints</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Mapper/Mapping.html">ActionDispatch::Routing::Mapper::Mapping</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001968">
+                    
+                    <a name="M001968"></a><b>normalize_name</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001968_source')" id="l_M001968_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L245" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001968_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 245</span>
+245:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">normalize_name</span>(<span class="ruby-identifier">name</span>)
+246:         <span class="ruby-identifier">normalize_path</span>(<span class="ruby-identifier">name</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;/&quot;</span>, <span class="ruby-value str">&quot;_&quot;</span>)
+247:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001967">
+                    
+                    <a name="M001967"></a><b>normalize_path</b>(path)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Invokes Rack::Mount::Utils.normalize path and ensure that (:locale) becomes
+(/:locale) instead of /(:locale). Except for root cases, where the latter
+is the correct one.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001967_source')" id="l_M001967_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L239" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001967_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 239</span>
+239:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">normalize_path</span>(<span class="ruby-identifier">path</span>)
+240:         <span class="ruby-identifier">path</span> = <span class="ruby-constant">Journey</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">normalize_path</span>(<span class="ruby-identifier">path</span>)
+241:         <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">%r{/(\(+)/?}</span>, <span class="ruby-value str">'\1/'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^/\(+[^/]+\)$}</span>
+242:         <span class="ruby-identifier">path</span>
+243:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

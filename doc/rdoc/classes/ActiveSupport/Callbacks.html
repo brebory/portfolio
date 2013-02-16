@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::Callbacks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActiveSupport::Callbacks 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activesupport/lib/active_support/callbacks_rb.html">activesupport/lib/active_support/callbacks.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Callbacks are code hooks that are run at key points in an object&#8217;s
+lifecycle. The typical use case is to have a base class define a set of
+callbacks relevant to the other functionality it supplies, so that
+subclasses can install callbacks that enhance or modify the base
+functionality without needing to override or redefine methods of the base
+class.
+</p>
+<p>
+Mixing in this module allows you to define the events in the object&#8217;s
+lifecycle that will support callbacks (via <tt><a
+href="ClassMethods.html#M003888">ClassMethods.define_callbacks</a></tt>),
+set the instance methods, procs, or callback objects to be called (via
+<tt><a
+href="ClassMethods.html#M003885">ClassMethods.set_callback</a></tt>), and
+run the installed callbacks at the appropriate times (via <tt><a
+href="Callbacks.html#M003874">run_callbacks</a></tt>).
+</p>
+<p>
+Three kinds of callbacks are supported: before callbacks, run before a
+certain event; after callbacks, run after the event; and around callbacks,
+blocks that surround the event, triggering it when they yield. Callback
+code can be contained in instance methods, procs or lambdas, or callback
+objects that respond to certain predetermined methods. See <tt><a
+href="ClassMethods.html#M003885">ClassMethods.set_callback</a></tt> for
+details.
+</p>
+<h4>Example</h4>
+<pre>
+  class Record
+    include ActiveSupport::Callbacks
+    define_callbacks :save
+
+    def save
+      run_callbacks :save do
+        puts &quot;- save&quot;
+      end
+    end
+  end
+
+  class PersonRecord &lt; Record
+    set_callback :save, :before, :saving_message
+    def saving_message
+      puts &quot;saving...&quot;
+    end
+
+    set_callback :save, :after do |object|
+      puts &quot;saved&quot;
+    end
+  end
+
+  person = PersonRecord.new
+  person.save
+</pre>
+<p>
+Output:
+</p>
+<pre>
+  saving...
+  - save
+  saved
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003874">run_callbacks</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Callbacks/Callback.html">ActiveSupport::Callbacks::Callback</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003874">
+                    
+                    <a name="M003874"></a><b>run_callbacks</b>(kind, *args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Runs the callbacks for the given event.
+</p>
+<p>
+Calls the before and around callbacks in the order they were set, yields
+the block (if given one), and then runs the after callbacks in reverse
+order. Optionally accepts a key, which will be used to compile an optimized
+callback method for each key. See <tt><a
+href="ClassMethods.html#M003888">ClassMethods.define_callbacks</a></tt> for
+more information.
+</p>
+<p>
+If the callback chain was halted, returns <tt>false</tt>. Otherwise returns
+the result of the block, or <tt>true</tt> if no block is given.
+</p>
+<pre>
+  run_callbacks :save do
+    save
+  end
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003874_source')" id="l_M003874_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/0c0f278ab20f3042cdb69604166e18a61f8605ad/activesupport/lib/active_support/callbacks.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003874_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/callbacks.rb, line 80</span>
+80:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_callbacks</span>(<span class="ruby-identifier">kind</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+81:       <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;_run_#{kind}_callbacks&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+82:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

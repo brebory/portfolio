@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveResource::Connection</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActiveResource::Connection 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activeresource/lib/active_resource/http_mock_rb.html">activeresource/lib/active_resource/http_mock.rb</a></li>
+            
+            <li><a href="../../files/activeresource/lib/active_resource/connection_rb.html">activeresource/lib/active_resource/connection.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Class to handle connections to remote web services. This class is used by
+<a href="Base.html">ActiveResource::Base</a> to interface with REST
+services.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001623">auth_type=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001627">delete</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001626">get</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001630">head</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001618">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001622">password=</a>,</li>
+                
+                <li><a href="#M001629">post</a>,</li>
+                
+                <li><a href="#M001620">proxy=</a>,</li>
+                
+                <li><a href="#M001628">put</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001617">requests</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001619">site=</a>,</li>
+                
+                <li><a href="#M001625">ssl_options=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001624">timeout=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001621">user=</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">HTTP_FORMAT_HEADER_NAMES</td>
+            <td>=</td>
+            <td class="attr-value">{  :get =&gt; 'Accept',       :put =&gt; 'Content-Type',       :post =&gt; 'Content-Type',       :delete =&gt; 'Accept',       :head =&gt; 'Accept'     }</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>site</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>user</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>password</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>auth_type</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>timeout</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>proxy</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>ssl_options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>format</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001618">
+                    
+                    <a name="M001618"></a><b>new</b>(site, format = ActiveResource::Formats::JsonFormat)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The <tt>site</tt> parameter is required and will set the <tt>site</tt>
+attribute to the <a href="../URI.html">URI</a> for the remote resource
+service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001618_source')" id="l_M001618_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001618_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">site</span>, <span class="ruby-identifier">format</span> = <span class="ruby-constant">ActiveResource</span><span class="ruby-operator">::</span><span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-constant">JsonFormat</span>)
+34:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">'Missing site URI'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">site</span>
+35:       <span class="ruby-ivar">@user</span> = <span class="ruby-ivar">@password</span> = <span class="ruby-keyword kw">nil</span>
+36:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span> = <span class="ruby-identifier">site</span>
+37:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">format</span>
+38:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001617">
+                    
+                    <a name="M001617"></a><b>requests</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001617_source')" id="l_M001617_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001617_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 26</span>
+26:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">requests</span>
+27:         <span class="ruby-ivar">@@requests</span> <span class="ruby-operator">||=</span> []
+28:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001623">
+                    
+                    <a name="M001623"></a><b>auth_type=</b>(auth_type)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sets the auth type for remote service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001623_source')" id="l_M001623_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001623_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 63</span>
+63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auth_type=</span>(<span class="ruby-identifier">auth_type</span>)
+64:       <span class="ruby-ivar">@auth_type</span> = <span class="ruby-identifier">legitimize_auth_type</span>(<span class="ruby-identifier">auth_type</span>)
+65:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001627">
+                    
+                    <a name="M001627"></a><b>delete</b>(path, headers = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Executes a DELETE request (see HTTP protocol documentation if unfamiliar).
+Used to delete resources.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001627_source')" id="l_M001627_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L85" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001627_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 85</span>
+85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">headers</span> = {})
+86:       <span class="ruby-identifier">with_auth</span> { <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:delete</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">build_request_headers</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">:delete</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">path</span>))) }
+87:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001626">
+                    
+                    <a name="M001626"></a><b>get</b>(path, headers = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Executes a GET request. Used to get (find) resources.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001626_source')" id="l_M001626_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001626_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 79</span>
+79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">headers</span> = {})
+80:       <span class="ruby-identifier">with_auth</span> { <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:get</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">build_request_headers</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">:get</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">path</span>))) }
+81:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001630">
+                    
+                    <a name="M001630"></a><b>head</b>(path, headers = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Executes a HEAD request. Used to obtain meta-information about resources,
+such as whether they exist and their size (via response headers).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001630_source')" id="l_M001630_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001630_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 103</span>
+103:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">head</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">headers</span> = {})
+104:       <span class="ruby-identifier">with_auth</span> { <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:head</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">build_request_headers</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">:head</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">path</span>))) }
+105:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001622">
+                    
+                    <a name="M001622"></a><b>password=</b>(password)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sets the password for remote service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001622_source')" id="l_M001622_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001622_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">password=</span>(<span class="ruby-identifier">password</span>)
+59:       <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+60:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001629">
+                    
+                    <a name="M001629"></a><b>post</b>(path, body = '', headers = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Executes a POST request. Used to create new resources.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001629_source')" id="l_M001629_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001629_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 97</span>
+97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">post</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">body</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">headers</span> = {})
+98:       <span class="ruby-identifier">with_auth</span> { <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:post</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">build_request_headers</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">:post</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">path</span>))) }
+99:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001620">
+                    
+                    <a name="M001620"></a><b>proxy=</b>(proxy)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Set the proxy for remote service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001620_source')" id="l_M001620_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001620_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 48</span>
+48:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">proxy=</span>(<span class="ruby-identifier">proxy</span>)
+49:       <span class="ruby-ivar">@proxy</span> = <span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">URI</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">proxy</span> <span class="ruby-operator">:</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">proxy</span>)
+50:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001628">
+                    
+                    <a name="M001628"></a><b>put</b>(path, body = '', headers = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Executes a PUT request (see HTTP protocol documentation if unfamiliar).
+Used to update resources.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001628_source')" id="l_M001628_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001628_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 91</span>
+91:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">put</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">body</span> = <span class="ruby-value str">''</span>, <span class="ruby-identifier">headers</span> = {})
+92:       <span class="ruby-identifier">with_auth</span> { <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:put</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">build_request_headers</span>(<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">:put</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">site</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">path</span>))) }
+93:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001619">
+                    
+                    <a name="M001619"></a><b>site=</b>(site)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Set <a href="../URI.html">URI</a> for remote service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001619_source')" id="l_M001619_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001619_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 41</span>
+41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">site=</span>(<span class="ruby-identifier">site</span>)
+42:       <span class="ruby-ivar">@site</span> = <span class="ruby-identifier">site</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">URI</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">site</span> <span class="ruby-operator">:</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">site</span>)
+43:       <span class="ruby-ivar">@user</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-ivar">@site</span>.<span class="ruby-identifier">user</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@site</span>.<span class="ruby-identifier">user</span>
+44:       <span class="ruby-ivar">@password</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-ivar">@site</span>.<span class="ruby-identifier">password</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@site</span>.<span class="ruby-identifier">password</span>
+45:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001625">
+                    
+                    <a name="M001625"></a><b>ssl_options=</b>(opts={})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+<a href="../Hash.html">Hash</a> of options applied to Net::HTTP instance
+when <tt>site</tt> protocol is &#8216;https&#8217;.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001625_source')" id="l_M001625_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001625_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 73</span>
+73:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ssl_options=</span>(<span class="ruby-identifier">opts</span>={})
+74:       <span class="ruby-ivar">@ssl_options</span> = <span class="ruby-identifier">opts</span>
+75:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001624">
+                    
+                    <a name="M001624"></a><b>timeout=</b>(timeout)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sets the number of seconds after which HTTP requests to the remote service
+should time out.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001624_source')" id="l_M001624_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001624_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 68</span>
+68:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">timeout=</span>(<span class="ruby-identifier">timeout</span>)
+69:       <span class="ruby-ivar">@timeout</span> = <span class="ruby-identifier">timeout</span>
+70:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001621">
+                    
+                    <a name="M001621"></a><b>user=</b>(user)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sets the user for remote service.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001621_source')" id="l_M001621_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b8bb5f44c8ba02786ed42d04f66641f236ef42c3/activeresource/lib/active_resource/connection.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001621_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activeresource/lib/active_resource/connection.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">user=</span>(<span class="ruby-identifier">user</span>)
+54:       <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+55:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

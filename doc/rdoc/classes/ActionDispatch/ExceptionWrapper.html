@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::ExceptionWrapper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::ExceptionWrapper 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_dispatch/middleware/exception_wrapper_rb.html">actionpack/lib/action_dispatch/middleware/exception_wrapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002259">application_trace</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002260">framework_trace</a>,</li>
+                
+                <li><a href="#M002261">full_trace</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002256">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002257">rescue_template</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002258">status_code</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>env</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>exception</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002256">
+                    
+                    <a name="M002256"></a><b>new</b>(env, exception)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002256_source')" id="l_M002256_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002256_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 27</span>
+27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">exception</span>)
+28:       <span class="ruby-ivar">@env</span> = <span class="ruby-identifier">env</span>
+29:       <span class="ruby-ivar">@exception</span> = <span class="ruby-identifier">original_exception</span>(<span class="ruby-identifier">exception</span>)
+30:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002259">
+                    
+                    <a name="M002259"></a><b>application_trace</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002259_source')" id="l_M002259_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002259_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">application_trace</span>
+41:       <span class="ruby-identifier">clean_backtrace</span>(<span class="ruby-identifier">:silent</span>)
+42:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002260">
+                    
+                    <a name="M002260"></a><b>framework_trace</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002260_source')" id="l_M002260_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002260_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">framework_trace</span>
+45:       <span class="ruby-identifier">clean_backtrace</span>(<span class="ruby-identifier">:noise</span>)
+46:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002261">
+                    
+                    <a name="M002261"></a><b>full_trace</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002261_source')" id="l_M002261_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002261_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 48</span>
+48:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">full_trace</span>
+49:       <span class="ruby-identifier">clean_backtrace</span>(<span class="ruby-identifier">:all</span>)
+50:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002257">
+                    
+                    <a name="M002257"></a><b>rescue_template</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002257_source')" id="l_M002257_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002257_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 32</span>
+32:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_template</span>
+33:       <span class="ruby-ivar">@@rescue_templates</span>[<span class="ruby-ivar">@exception</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>]
+34:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002258">
+                    
+                    <a name="M002258"></a><b>status_code</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002258_source')" id="l_M002258_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/750bb5c865ac9234da91ec451eec7d9de55b8f9b/actionpack/lib/action_dispatch/middleware/exception_wrapper.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002258_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/exception_wrapper.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">status_code</span>
+37:       <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">status_code</span>(<span class="ruby-ivar">@@rescue_responses</span>[<span class="ruby-ivar">@exception</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>])
+38:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

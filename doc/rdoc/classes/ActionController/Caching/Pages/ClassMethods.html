@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionController::Caching::Pages::ClassMethods</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActionController::Caching::Pages::ClassMethods 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/actionpack/lib/action_controller/caching/pages_rb.html">actionpack/lib/action_controller/caching/pages.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001925">cache_page</a>,</li>
+                
+                <li><a href="#M001926">caches_page</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001924">expire_page</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001925">
+                    
+                    <a name="M001925"></a><b>cache_page</b>(content, path, extension = nil, gzip = Zlib::BEST_COMPRESSION)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Manually cache the <tt>content</tt> in the key determined by <tt>path</tt>.
+Example:
+</p>
+<pre>
+  cache_page &quot;I'm the cached content&quot;, &quot;/lists/show&quot;
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001925_source')" id="l_M001925_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c4ef3d34ee4b901a591af8b48012c9233e2fe4a3/actionpack/lib/action_controller/caching/pages.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001925_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/caching/pages.rb, line 77</span>
+77:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_page</span>(<span class="ruby-identifier">content</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">extension</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">gzip</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">BEST_COMPRESSION</span>)
+78:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">perform_caching</span>
+79:           <span class="ruby-identifier">path</span> = <span class="ruby-identifier">page_cache_path</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">extension</span>)
+80: 
+81:           <span class="ruby-identifier">instrument_page_cache</span> <span class="ruby-identifier">:write_page</span>, <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">do</span>
+82:             <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">makedirs</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>))
+83:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;wb+&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">content</span>) }
+84:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gzip</span>
+85:               <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'.gz'</span>, <span class="ruby-identifier">gzip</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">content</span>) }
+86:             <span class="ruby-keyword kw">end</span>
+87:           <span class="ruby-keyword kw">end</span>
+88:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001926">
+                    
+                    <a name="M001926"></a><b>caches_page</b>(*actions)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Caches the <tt>actions</tt> using the page-caching approach that&#8217;ll
+store the cache in a path within the page_cache_directory that matches the
+triggering url.
+</p>
+<p>
+You can also pass a :gzip option to override the class configuration one.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+  # cache the index action
+  caches_page :index
+
+  # cache the index action except for JSON requests
+  caches_page :index, :if =&gt; Proc.new { |c| !c.request.format.json? }
+
+  # don't gzip images
+  caches_page :image, :gzip =&gt; false
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001926_source')" id="l_M001926_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c4ef3d34ee4b901a591af8b48012c9233e2fe4a3/actionpack/lib/action_controller/caching/pages.rb#L106" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001926_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_controller/caching/pages.rb, line 106</span>
+106:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">caches_page</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">actions</span>)
+107:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">perform_caching</span>
+108:           <span class="ruby-identifier">options</span> = <span class="ruby-identifier">actions</span>.<span class="ruby-identifier">extract_options!</span>
+109: 
+110:           <span class="ruby-identifier">gzip_level</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">:gzip</span>, <span class="ruby-identifier">page_cache_compression</span>)
+111:           <span class="ruby-identifier">gzip_level</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">gzip_level</span>
+112:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Symbol</span>
+113:             <span class="ruby-constant">Zlib</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">gzip_level</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>)
+114:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Fixnum</span>
+115:             <span class="ruby-identifier">gzip_level</span>
+116:           <span class="ruby-keyword kw">when</span> <span class="ruby-keyword kw">false</span>
+117:             <span class="ruby-keyword kw">nil</span>
+118:           <span class="ruby-keyword kw">else</span>
+119:             <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">BEST_COMPRESSION</span>
+120:           <span class="ruby-keyword kw">end</span>
+121: 
+122:           <span class="ruby-identifier">after_filter</span>({<span class="ruby-identifier">:only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">actions</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+123:             <span class="ruby-identifier">c</span>.<span class="ruby-identifier">cache_page</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">gzip_level</span>)
+124:           <span class="ruby-keyword kw">end</span>
+125:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001924">
+                    
+                    <a name="M001924"></a><b>expire_page</b>(path)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Expires the page that was cached with the <tt>path</tt> as a key. Example:
+</p>
+<pre>
+  expire_page &quot;/lists/show&quot;
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001924_source')" id="l_M001924_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c4ef3d34ee4b901a591af8b48012c9233e2fe4a3/actionpack/lib/action_controller/caching/pages.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001924_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/caching/pages.rb, line 65</span>
+65:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expire_page</span>(<span class="ruby-identifier">path</span>)
+66:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">perform_caching</span>
+67:           <span class="ruby-identifier">path</span> = <span class="ruby-identifier">page_cache_path</span>(<span class="ruby-identifier">path</span>)
+68: 
+69:           <span class="ruby-identifier">instrument_page_cache</span> <span class="ruby-identifier">:expire_page</span>, <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">do</span>
+70:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span>)
+71:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'.gz'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'.gz'</span>)
+72:           <span class="ruby-keyword kw">end</span>
+73:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

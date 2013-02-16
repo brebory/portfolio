@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionView::Template::Handlers::ERB</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionView::Template::Handlers::ERB 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/actionpack/lib/action_view/template/handlers/erb_rb.html">actionpack/lib/action_view/template/handlers/erb.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002478">call</a>,</li>
+                
+                <li><a href="#M002481">call</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002480">handles_encoding?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002479">supports_streaming?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">ENCODING_TAG</td>
+            <td>=</td>
+            <td class="attr-value">Regexp.new(&quot;\\A(&lt;%#{ENCODING_FLAG}-?%&gt;)[ \\t]*&quot;)</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002478">
+                    
+                    <a name="M002478"></a><b>call</b>(template)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002478_source')" id="l_M002478_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/19433ce8701d9ff2b311d0a2ec98be366ce461ea/actionpack/lib/action_view/template/handlers/erb.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002478_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_view/template/handlers/erb.rb, line 53</span>
+53:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">template</span>)
+54:           <span class="ruby-identifier">new</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">template</span>)
+55:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002481">
+                    
+                    <a name="M002481"></a><b>call</b>(template)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002481_source')" id="l_M002481_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/19433ce8701d9ff2b311d0a2ec98be366ce461ea/actionpack/lib/action_view/template/handlers/erb.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002481_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_view/template/handlers/erb.rb, line 65</span>
+65:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">template</span>)
+66:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">template</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">encoding_aware?</span>
+67:             <span class="ruby-comment cmt"># First, convert to BINARY, so in case the encoding is</span>
+68:             <span class="ruby-comment cmt"># wrong, we can still find an encoding tag</span>
+69:             <span class="ruby-comment cmt"># (&lt;%# encoding %&gt;) inside the String using a regular</span>
+70:             <span class="ruby-comment cmt"># expression</span>
+71:             <span class="ruby-identifier">template_source</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-value str">&quot;BINARY&quot;</span>)
+72: 
+73:             <span class="ruby-identifier">erb</span> = <span class="ruby-identifier">template_source</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">ENCODING_TAG</span>, <span class="ruby-value str">''</span>)
+74:             <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">$2</span>
+75: 
+76:             <span class="ruby-identifier">erb</span>.<span class="ruby-identifier">force_encoding</span> <span class="ruby-identifier">valid_encoding</span>(<span class="ruby-identifier">template</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">encoding</span>)
+77: 
+78:             <span class="ruby-comment cmt"># Always make sure we return a String in the default_internal</span>
+79:             <span class="ruby-identifier">erb</span>.<span class="ruby-identifier">encode!</span>
+80:           <span class="ruby-keyword kw">else</span>
+81:             <span class="ruby-identifier">erb</span> = <span class="ruby-identifier">template</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">dup</span>
+82:           <span class="ruby-keyword kw">end</span>
+83: 
+84:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">erb_implementation</span>.<span class="ruby-identifier">new</span>(
+85:             <span class="ruby-identifier">erb</span>,
+86:             <span class="ruby-identifier">:trim</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">erb_trim_mode</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;-&quot;</span>)
+87:           ).<span class="ruby-identifier">src</span>
+88:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002480">
+                    
+                    <a name="M002480"></a><b>handles_encoding?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002480_source')" id="l_M002480_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/19433ce8701d9ff2b311d0a2ec98be366ce461ea/actionpack/lib/action_view/template/handlers/erb.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002480_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_view/template/handlers/erb.rb, line 61</span>
+61:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handles_encoding?</span>
+62:           <span class="ruby-keyword kw">true</span>
+63:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002479">
+                    
+                    <a name="M002479"></a><b>supports_streaming?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002479_source')" id="l_M002479_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/19433ce8701d9ff2b311d0a2ec98be366ce461ea/actionpack/lib/action_view/template/handlers/erb.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002479_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_view/template/handlers/erb.rb, line 57</span>
+57:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">supports_streaming?</span>
+58:           <span class="ruby-keyword kw">true</span>
+59:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

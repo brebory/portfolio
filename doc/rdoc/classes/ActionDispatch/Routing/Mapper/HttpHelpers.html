@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Routing::Mapper::HttpHelpers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActionDispatch::Routing::Mapper::HttpHelpers 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/actionpack/lib/action_dispatch/routing/mapper_rb.html">actionpack/lib/action_dispatch/routing/mapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001980">delete</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001977">get</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001978">post</a>,</li>
+                
+                <li><a href="#M001979">put</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001980">
+                    
+                    <a name="M001980"></a><b>delete</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a route that only recognizes HTTP PUT. For supported arguments, see
+<tt><a href="Base.html#M001970">Base#match</a></tt>.
+</p>
+<p>
+Example:
+</p>
+<p>
+delete &#8216;broccoli&#8217;, :to => &#8216;foodbroccoli&#8216;
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001980_source')" id="l_M001980_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L498" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001980_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 498</span>
+498:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+499:           <span class="ruby-identifier">map_method</span>(<span class="ruby-identifier">:delete</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+500:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001977">
+                    
+                    <a name="M001977"></a><b>get</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a route that only recognizes HTTP GET. For supported arguments, see
+<tt><a href="Base.html#M001970">Base#match</a></tt>.
+</p>
+<p>
+Example:
+</p>
+<p>
+get &#8216;bacon&#8217;, :to => &#8216;foodbacon&#8216;
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001977_source')" id="l_M001977_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L468" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001977_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 468</span>
+468:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+469:           <span class="ruby-identifier">map_method</span>(<span class="ruby-identifier">:get</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+470:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001978">
+                    
+                    <a name="M001978"></a><b>post</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a route that only recognizes HTTP POST. For supported arguments, see
+<tt><a href="Base.html#M001970">Base#match</a></tt>.
+</p>
+<p>
+Example:
+</p>
+<p>
+post &#8216;bacon&#8217;, :to => &#8216;foodbacon&#8216;
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001978_source')" id="l_M001978_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L478" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001978_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 478</span>
+478:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">post</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+479:           <span class="ruby-identifier">map_method</span>(<span class="ruby-identifier">:post</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+480:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001979">
+                    
+                    <a name="M001979"></a><b>put</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a route that only recognizes HTTP PUT. For supported arguments, see
+<tt><a href="Base.html#M001970">Base#match</a></tt>.
+</p>
+<p>
+Example:
+</p>
+<p>
+put &#8216;bacon&#8217;, :to => &#8216;foodbacon&#8216;
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001979_source')" id="l_M001979_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/7c7fb3a862651d87c4071e40a1799b973f626b11/actionpack/lib/action_dispatch/routing/mapper.rb#L488" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001979_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 488</span>
+488:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">put</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+489:           <span class="ruby-identifier">map_method</span>(<span class="ruby-identifier">:put</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+490:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>AbstractController::ViewPaths::ClassMethods</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            AbstractController::ViewPaths::ClassMethods 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/actionpack/lib/abstract_controller/view_paths_rb.html">actionpack/lib/abstract_controller/view_paths.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001701">append_view_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001695">parent_prefixes</a>,</li>
+                
+                <li><a href="#M001702">prepend_view_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001703">view_paths</a>,</li>
+                
+                <li><a href="#M001704">view_paths=</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001701">
+                    
+                    <a name="M001701"></a><b>append_view_path</b>(path)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Append a path to the list of view paths for this controller.
+</p>
+<h4>Parameters</h4>
+<ul>
+<li><tt>path</tt> - If a <a href="../../String.html">String</a> is provided, it
+gets converted into the default view path. You may also provide a custom
+view path (see ActionView::PathSet for more information)
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001701_source')" id="l_M001701_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/239262fee03096d1e52acf8fe69de736726d87e0/actionpack/lib/abstract_controller/view_paths.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001701_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/view_paths.rb, line 67</span>
+67:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">append_view_path</span>(<span class="ruby-identifier">path</span>)
+68:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">_view_paths</span> = <span class="ruby-identifier">view_paths</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">path</span>)
+69:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001695">
+                    
+                    <a name="M001695"></a><b>parent_prefixes</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001695_source')" id="l_M001695_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/239262fee03096d1e52acf8fe69de736726d87e0/actionpack/lib/abstract_controller/view_paths.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001695_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/view_paths.rb, line 17</span>
+17:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parent_prefixes</span>
+18:         <span class="ruby-ivar">@parent_prefixes</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+19:           <span class="ruby-identifier">parent_controller</span> = <span class="ruby-identifier">superclass</span>
+20:           <span class="ruby-identifier">prefixes</span> = []
+21: 
+22:           <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">parent_controller</span>.<span class="ruby-identifier">abstract?</span>
+23:             <span class="ruby-identifier">prefixes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">parent_controller</span>.<span class="ruby-identifier">controller_path</span>
+24:             <span class="ruby-identifier">parent_controller</span> = <span class="ruby-identifier">parent_controller</span>.<span class="ruby-identifier">superclass</span>
+25:           <span class="ruby-keyword kw">end</span>
+26: 
+27:           <span class="ruby-identifier">prefixes</span>
+28:         <span class="ruby-keyword kw">end</span>
+29:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001702">
+                    
+                    <a name="M001702"></a><b>prepend_view_path</b>(path)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Prepend a path to the list of view paths for this controller.
+</p>
+<h4>Parameters</h4>
+<ul>
+<li><tt>path</tt> - If a <a href="../../String.html">String</a> is provided, it
+gets converted into the default view path. You may also provide a custom
+view path (see ActionView::PathSet for more information)
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001702_source')" id="l_M001702_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/239262fee03096d1e52acf8fe69de736726d87e0/actionpack/lib/abstract_controller/view_paths.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001702_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/view_paths.rb, line 77</span>
+77:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepend_view_path</span>(<span class="ruby-identifier">path</span>)
+78:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">_view_paths</span> = <span class="ruby-constant">ActionView</span><span class="ruby-operator">::</span><span class="ruby-constant">PathSet</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Array</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">view_paths</span>)
+79:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001703">
+                    
+                    <a name="M001703"></a><b>view_paths</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A list of all of the default view paths for this controller.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001703_source')" id="l_M001703_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/239262fee03096d1e52acf8fe69de736726d87e0/actionpack/lib/abstract_controller/view_paths.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001703_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/view_paths.rb, line 82</span>
+82:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">view_paths</span>
+83:         <span class="ruby-identifier">_view_paths</span>
+84:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001704">
+                    
+                    <a name="M001704"></a><b>view_paths=</b>(paths)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Set the view paths.
+</p>
+<h4>Parameters</h4>
+<ul>
+<li><tt>paths</tt> - If a PathSet is provided, use that; otherwise, process the
+parameter into a PathSet.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001704_source')" id="l_M001704_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/239262fee03096d1e52acf8fe69de736726d87e0/actionpack/lib/abstract_controller/view_paths.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001704_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/view_paths.rb, line 91</span>
+91:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">view_paths=</span>(<span class="ruby-identifier">paths</span>)
+92:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">_view_paths</span> = <span class="ruby-constant">ActionView</span><span class="ruby-operator">::</span><span class="ruby-constant">PathSet</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">paths</span>))
+93:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

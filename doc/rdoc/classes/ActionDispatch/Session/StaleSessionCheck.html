@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Session::StaleSessionCheck</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActionDispatch::Session::StaleSessionCheck 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/actionpack/lib/action_dispatch/middleware/session/abstract_store_rb.html">actionpack/lib/action_dispatch/middleware/session/abstract_store.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002331">extract_session_id</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002330">load_session</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002332">stale_session_check!</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002331">
+                    
+                    <a name="M002331"></a><b>extract_session_id</b>(env)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002331_source')" id="l_M002331_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/d1425725673b0172d6561adebaed017b51db9333/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L50" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002331_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 50</span>
+50:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_session_id</span>(<span class="ruby-identifier">env</span>)
+51:         <span class="ruby-identifier">stale_session_check!</span> { <span class="ruby-keyword kw">super</span> }
+52:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002330">
+                    
+                    <a name="M002330"></a><b>load_session</b>(env)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002330_source')" id="l_M002330_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/d1425725673b0172d6561adebaed017b51db9333/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002330_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 46</span>
+46:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_session</span>(<span class="ruby-identifier">env</span>)
+47:         <span class="ruby-identifier">stale_session_check!</span> { <span class="ruby-keyword kw">super</span> }
+48:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002332">
+                    
+                    <a name="M002332"></a><b>stale_session_check!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002332_source')" id="l_M002332_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/d1425725673b0172d6561adebaed017b51db9333/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002332_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 54</span>
+54:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stale_session_check!</span>
+55:         <span class="ruby-keyword kw">yield</span>
+56:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">argument_error</span>
+57:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">argument_error</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{undefined class/module ([\w:]*\w)}</span>
+58:           <span class="ruby-keyword kw">begin</span>
+59:             <span class="ruby-comment cmt"># Note that the regexp does not allow $1 to end with a ':'</span>
+60:             <span class="ruby-identifier">$1</span>.<span class="ruby-identifier">constantize</span>
+61:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">const_error</span>
+62:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActionDispatch</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionRestoreError</span>,
+63:               <span class="ruby-value str">&quot;Session contains objects whose class definition isn't available.\n&quot;</span> <span class="ruby-operator">+</span>
+64:               <span class="ruby-value str">&quot;Remember to require the classes for all objects kept in the session.\n&quot;</span> <span class="ruby-operator">+</span>
+65:               <span class="ruby-node">&quot;(Original exception: #{const_error.message} [#{const_error.class}])\n&quot;</span>
+66:           <span class="ruby-keyword kw">end</span>
+67:           <span class="ruby-keyword kw">retry</span>
+68:         <span class="ruby-keyword kw">else</span>
+69:           <span class="ruby-identifier">raise</span>
+70:         <span class="ruby-keyword kw">end</span>
+71:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

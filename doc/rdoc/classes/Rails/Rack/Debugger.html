@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Rails::Rack::Debugger</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Rails::Rack::Debugger 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/railties/lib/rails/rack/debugger_rb.html">railties/lib/rails/rack/debugger.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000483">call</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000482">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000482">
+                    
+                    <a name="M000482"></a><b>new</b>(app)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000482_source')" id="l_M000482_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/eff5d9aed468e8d6c4ffb103dad8e99b0a65465d/railties/lib/rails/rack/debugger.rb#L4" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000482_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/rack/debugger.rb, line 4</span>
+ 4:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>)
+ 5:         <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+ 6: 
+ 7:         <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">clear</span> <span class="ruby-comment cmt"># clear ARGV so that rails server options aren't passed to IRB</span>
+ 8: 
+ 9:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'ruby-debug'</span>
+10: 
+11:         <span class="ruby-operator">::</span><span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">start</span>
+12:         <span class="ruby-operator">::</span><span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:autoeval</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Debugger</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:settings</span>)
+13:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;=&gt; Debugger enabled&quot;</span>
+14:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+15:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;You need to install ruby-debug to run the server in debugging mode. With gems, use 'gem install ruby-debug'&quot;</span>
+16:         <span class="ruby-identifier">exit</span>
+17:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000483">
+                    
+                    <a name="M000483"></a><b>call</b>(env)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000483_source')" id="l_M000483_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/eff5d9aed468e8d6c4ffb103dad8e99b0a65465d/railties/lib/rails/rack/debugger.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000483_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/rack/debugger.rb, line 19</span>
+19:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+20:         <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+21:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

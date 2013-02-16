@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::TestRequest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::TestRequest 
+            
+                <span class="parent">&lt; 
+                    
+                    Request
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_dispatch/testing/test_request_rb.html">actionpack/lib/action_dispatch/testing/test_request.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002362">accept=</a>,</li>
+                
+                <li><a href="#M002357">action=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002363">cookies</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002353">host=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002358">if_modified_since=</a>,</li>
+                
+                <li><a href="#M002359">if_none_match=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002350">new</a>,</li>
+                
+                <li><a href="#M002351">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002356">path=</a>,</li>
+                
+                <li><a href="#M002354">port=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002364">rack_cookies</a>,</li>
+                
+                <li><a href="#M002360">remote_addr=</a>,</li>
+                
+                <li><a href="#M002352">request_method=</a>,</li>
+                
+                <li><a href="#M002355">request_uri=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002361">user_agent=</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">DEFAULT_ENV</td>
+            <td>=</td>
+            <td class="attr-value">Rack::MockRequest.env_for('/')</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002350">
+                    
+                    <a name="M002350"></a><b>new</b>(env = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002350_source')" id="l_M002350_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002350_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 10</span>
+10:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env</span> = {})
+11:       <span class="ruby-keyword kw">super</span>
+12:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002351">
+                    
+                    <a name="M002351"></a><b>new</b>(env = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002351_source')" id="l_M002351_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002351_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 14</span>
+14:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">env</span> = {})
+15:       <span class="ruby-identifier">env</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">env_config</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">env</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">application</span>)
+16:       <span class="ruby-keyword kw">super</span>(<span class="ruby-constant">DEFAULT_ENV</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">env</span>))
+17: 
+18:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">host</span>        = <span class="ruby-value str">'test.host'</span>
+19:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">remote_addr</span> = <span class="ruby-value str">'0.0.0.0'</span>
+20:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">user_agent</span>  = <span class="ruby-value str">'Rails Testing'</span>
+21:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002362">
+                    
+                    <a name="M002362"></a><b>accept=</b>(mime_types)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002362_source')" id="l_M002362_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002362_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 63</span>
+63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">accept=</span>(<span class="ruby-identifier">mime_types</span>)
+64:       <span class="ruby-ivar">@env</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'action_dispatch.request.accepts'</span>)
+65:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_ACCEPT'</span>] = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">mime_types</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">mime_type</span><span class="ruby-operator">|</span> <span class="ruby-identifier">mime_type</span>.<span class="ruby-identifier">to_s</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+66:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002357">
+                    
+                    <a name="M002357"></a><b>action=</b>(action_name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002357_source')" id="l_M002357_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002357_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 43</span>
+43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">action=</span>(<span class="ruby-identifier">action_name</span>)
+44:       <span class="ruby-identifier">path_parameters</span>[<span class="ruby-value str">&quot;action&quot;</span>] = <span class="ruby-identifier">action_name</span>.<span class="ruby-identifier">to_s</span>
+45:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002363">
+                    
+                    <a name="M002363"></a><b>cookies</b>()
+                    
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="TestRequest.html#M002364">rack_cookies</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002363_source')" id="l_M002363_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L70" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002363_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 70</span>
+70:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cookies</span>
+71:       <span class="ruby-ivar">@cookies</span> <span class="ruby-operator">||=</span> {}.<span class="ruby-identifier">with_indifferent_access</span>
+72:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002353">
+                    
+                    <a name="M002353"></a><b>host=</b>(host)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002353_source')" id="l_M002353_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002353_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 27</span>
+27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host=</span>(<span class="ruby-identifier">host</span>)
+28:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_HOST'</span>] = <span class="ruby-identifier">host</span>
+29:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002358">
+                    
+                    <a name="M002358"></a><b>if_modified_since=</b>(last_modified)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002358_source')" id="l_M002358_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002358_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">if_modified_since=</span>(<span class="ruby-identifier">last_modified</span>)
+48:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_IF_MODIFIED_SINCE'</span>] = <span class="ruby-identifier">last_modified</span>
+49:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002359">
+                    
+                    <a name="M002359"></a><b>if_none_match=</b>(etag)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002359_source')" id="l_M002359_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002359_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">if_none_match=</span>(<span class="ruby-identifier">etag</span>)
+52:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_IF_NONE_MATCH'</span>] = <span class="ruby-identifier">etag</span>
+53:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002356">
+                    
+                    <a name="M002356"></a><b>path=</b>(path)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002356_source')" id="l_M002356_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002356_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 39</span>
+39:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path=</span>(<span class="ruby-identifier">path</span>)
+40:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'PATH_INFO'</span>] = <span class="ruby-identifier">path</span>
+41:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002354">
+                    
+                    <a name="M002354"></a><b>port=</b>(number)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002354_source')" id="l_M002354_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002354_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">port=</span>(<span class="ruby-identifier">number</span>)
+32:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'SERVER_PORT'</span>] = <span class="ruby-identifier">number</span>.<span class="ruby-identifier">to_i</span>
+33:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002364">
+                    
+                    <a name="M002364"></a><b>rack_cookies</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="TestRequest.html#M002363">cookies</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002360">
+                    
+                    <a name="M002360"></a><b>remote_addr=</b>(addr)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002360_source')" id="l_M002360_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002360_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 55</span>
+55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remote_addr=</span>(<span class="ruby-identifier">addr</span>)
+56:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'REMOTE_ADDR'</span>] = <span class="ruby-identifier">addr</span>
+57:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002352">
+                    
+                    <a name="M002352"></a><b>request_method=</b>(method)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002352_source')" id="l_M002352_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002352_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 23</span>
+23:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_method=</span>(<span class="ruby-identifier">method</span>)
+24:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'REQUEST_METHOD'</span>] = <span class="ruby-identifier">method</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+25:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002355">
+                    
+                    <a name="M002355"></a><b>request_uri=</b>(uri)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002355_source')" id="l_M002355_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002355_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_uri=</span>(<span class="ruby-identifier">uri</span>)
+36:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'REQUEST_URI'</span>] = <span class="ruby-identifier">uri</span>
+37:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002361">
+                    
+                    <a name="M002361"></a><b>user_agent=</b>(user_agent)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002361_source')" id="l_M002361_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e864ff7259ed9e4c61a146c635aedc3c60779931/actionpack/lib/action_dispatch/testing/test_request.rb#L59" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002361_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/testing/test_request.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">user_agent=</span>(<span class="ruby-identifier">user_agent</span>)
+60:       <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_USER_AGENT'</span>] = <span class="ruby-identifier">user_agent</span>
+61:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

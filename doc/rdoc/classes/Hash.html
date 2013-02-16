@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Hash</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Hash 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/slice_rb.html">activesupport/lib/active_support/core_ext/hash/slice.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/keys_rb.html">activesupport/lib/active_support/core_ext/hash/keys.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/reverse_merge_rb.html">activesupport/lib/active_support/core_ext/hash/reverse_merge.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/deep_dup_rb.html">activesupport/lib/active_support/core_ext/hash/deep_dup.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/deep_merge_rb.html">activesupport/lib/active_support/core_ext/hash/deep_merge.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/diff_rb.html">activesupport/lib/active_support/core_ext/hash/diff.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/conversions_rb.html">activesupport/lib/active_support/core_ext/hash/conversions.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/except_rb.html">activesupport/lib/active_support/core_ext/hash/except.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/hash/indifferent_access_rb.html">activesupport/lib/active_support/core_ext/hash/indifferent_access.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/array/extract_options_rb.html">activesupport/lib/active_support/core_ext/array/extract_options.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/object/blank_rb.html">activesupport/lib/active_support/core_ext/object/blank.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/object/to_param_rb.html">activesupport/lib/active_support/core_ext/object/to_param.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/object/to_query_rb.html">activesupport/lib/active_support/core_ext/object/to_query.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/json/encoding_rb.html">activesupport/lib/active_support/json/encoding.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003000">assert_valid_keys</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003004">deep_dup</a>,</li>
+                
+                <li><a href="#M003005">deep_merge</a>,</li>
+                
+                <li><a href="#M003006">deep_merge!</a>,</li>
+                
+                <li><a href="#M003007">diff</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003640">encode_json</a>,</li>
+                
+                <li><a href="#M003012">except</a>,</li>
+                
+                <li><a href="#M003013">except!</a>,</li>
+                
+                <li><a href="#M002993">extract!</a>,</li>
+                
+                <li><a href="#M003034">extractable_options?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003009">from_xml</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003015">nested_under_indifferent_access</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003001">reverse_merge</a>,</li>
+                
+                <li><a href="#M003002">reverse_merge!</a>,</li>
+                
+                <li><a href="#M003003">reverse_update</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002991">slice</a>,</li>
+                
+                <li><a href="#M002992">slice!</a>,</li>
+                
+                <li><a href="#M002994">stringify_keys</a>,</li>
+                
+                <li><a href="#M002995">stringify_keys!</a>,</li>
+                
+                <li><a href="#M002996">symbolize_keys</a>,</li>
+                
+                <li><a href="#M002997">symbolize_keys!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002998">to_options</a>,</li>
+                
+                <li><a href="#M002999">to_options!</a>,</li>
+                
+                <li><a href="#M003162">to_param</a>,</li>
+                
+                <li><a href="#M003174">to_query</a>,</li>
+                
+                <li><a href="#M003008">to_xml</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>W</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M003014">with_indifferent_access</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003009">
+                    
+                    <a name="M003009"></a><b>from_xml</b>(xml)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003009_source')" id="l_M003009_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/83555a539891d18c37e788ebd5bdc819d4cfe7f5/activesupport/lib/active_support/core_ext/hash/conversions.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003009_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/conversions.rb, line 89</span>
+89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_xml</span>(<span class="ruby-identifier">xml</span>)
+90:       <span class="ruby-identifier">typecast_xml_value</span>(<span class="ruby-identifier">unrename_keys</span>(<span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMini</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">xml</span>)))
+91:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M003000">
+                    
+                    <a name="M003000"></a><b>assert_valid_keys</b>(*valid_keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Validate all keys in a hash match *valid keys, raising ArgumentError on a
+mismatch. Note that keys are NOT treated indifferently, meaning if you use
+strings for keys but assert symbols as keys, this will fail.
+</p>
+<h4>Examples</h4>
+<pre>
+  { :name =&gt; &quot;Rob&quot;, :years =&gt; &quot;28&quot; }.assert_valid_keys(:name, :age) # =&gt; raises &quot;ArgumentError: Unknown key: years&quot;
+  { :name =&gt; &quot;Rob&quot;, :age =&gt; &quot;28&quot; }.assert_valid_keys(&quot;name&quot;, &quot;age&quot;) # =&gt; raises &quot;ArgumentError: Unknown key: name&quot;
+  { :name =&gt; &quot;Rob&quot;, :age =&gt; &quot;28&quot; }.assert_valid_keys(:name, :age) # =&gt; passes, raises nothing
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003000_source')" id="l_M003000_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/keys.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003000_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/keys.rb, line 48</span>
+48:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_valid_keys</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">valid_keys</span>)
+49:     <span class="ruby-identifier">valid_keys</span>.<span class="ruby-identifier">flatten!</span>
+50:     <span class="ruby-identifier">each_key</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+51:       <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown key: #{k}&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">valid_keys</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)
+52:     <span class="ruby-keyword kw">end</span>
+53:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003004">
+                    
+                    <a name="M003004"></a><b>deep_dup</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a deep copy of hash.
+</p>
+<pre>
+  hash = { :a =&gt; { :b =&gt; 'b' } }
+  dup  = hash.deep_dup
+  dup[:a][:c] = 'c'
+
+  hash[:a][:c] #=&gt; nil
+  dup[:a][:c]  #=&gt; &quot;c&quot;
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003004_source')" id="l_M003004_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/deep_dup.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003004_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/deep_dup.rb, line 10</span>
+10:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deep_dup</span>
+11:     <span class="ruby-identifier">duplicate</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+12:     <span class="ruby-identifier">duplicate</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+13:       <span class="ruby-identifier">tv</span> = <span class="ruby-identifier">duplicate</span>[<span class="ruby-identifier">k</span>]
+14:       <span class="ruby-identifier">duplicate</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">tv</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">tv</span>.<span class="ruby-identifier">deep_dup</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span>
+15:     <span class="ruby-keyword kw">end</span>
+16:     <span class="ruby-identifier">duplicate</span>
+17:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003005">
+                    
+                    <a name="M003005"></a><b>deep_merge</b>(other_hash)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a new hash with <tt>self</tt> and <tt>other_hash</tt> merged
+recursively.
+</p>
+<pre>
+  h1 = {:x =&gt; {:y =&gt; [4,5,6]}, :z =&gt; [7,8,9]}
+  h2 = {:x =&gt; {:y =&gt; [7,8,9]}, :z =&gt; &quot;xyz&quot;}
+
+  h1.deep_merge(h2) #=&gt; { :x =&gt; {:y =&gt; [7, 8, 9]}, :z =&gt; &quot;xyz&quot; }
+  h2.deep_merge(h1) #=&gt; { :x =&gt; {:y =&gt; [4, 5, 6]}, :z =&gt; [7, 8, 9] }
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003005_source')" id="l_M003005_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/deep_merge.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003005_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/deep_merge.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">other_hash</span>)
+10:     <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">other_hash</span>)
+11:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003006">
+                    
+                    <a name="M003006"></a><b>deep_merge!</b>(other_hash)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Same as <tt><a href="Hash.html#M003005">deep_merge</a></tt>, but modifies
+<tt>self</tt>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003006_source')" id="l_M003006_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/deep_merge.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003006_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/deep_merge.rb, line 14</span>
+14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deep_merge!</span>(<span class="ruby-identifier">other_hash</span>)
+15:     <span class="ruby-identifier">other_hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+16:       <span class="ruby-identifier">tv</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>]
+17:       <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">tv</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">tv</span>.<span class="ruby-identifier">deep_merge</span>(<span class="ruby-identifier">v</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">v</span>
+18:     <span class="ruby-keyword kw">end</span>
+19:     <span class="ruby-keyword kw">self</span>
+20:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003007">
+                    
+                    <a name="M003007"></a><b>diff</b>(h2)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a hash that represents the difference between two hashes.
+</p>
+<p>
+Examples:
+</p>
+<pre>
+  {1 =&gt; 2}.diff(1 =&gt; 2)         # =&gt; {}
+  {1 =&gt; 2}.diff(1 =&gt; 3)         # =&gt; {1 =&gt; 2}
+  {}.diff(1 =&gt; 2)               # =&gt; {1 =&gt; 2}
+  {1 =&gt; 2, 3 =&gt; 4}.diff(1 =&gt; 2) # =&gt; {3 =&gt; 4}
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003007_source')" id="l_M003007_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/0920e69244026ec83471bb4571e56300045307d3/activesupport/lib/active_support/core_ext/hash/diff.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003007_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/diff.rb, line 10</span>
+10:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">diff</span>(<span class="ruby-identifier">h2</span>)
+11:     <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h2</span>[<span class="ruby-identifier">k</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">v</span> }.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">h2</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>) })
+12:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003640">
+                    
+                    <a name="M003640"></a><b>encode_json</b>(encoder)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003640_source')" id="l_M003640_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/624f801d27e946cae2244924e7f6a04565666036/activesupport/lib/active_support/json/encoding.rb#L245" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003640_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activesupport/lib/active_support/json/encoding.rb, line 245</span>
+245:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encode_json</span>(<span class="ruby-identifier">encoder</span>)
+246:     <span class="ruby-comment cmt"># values are encoded with use_options = false, because we don't want hash representations from ActiveModel to be</span>
+247:     <span class="ruby-comment cmt"># processed once again with as_json with options, as this could cause unexpected results (i.e. missing fields);</span>
+248: 
+249:     <span class="ruby-comment cmt"># on the other hand, we need to run as_json on the elements, because the model representation may contain fields</span>
+250:     <span class="ruby-comment cmt"># like Time/Date in their original (not jsonified) form, etc.</span>
+251: 
+252:     <span class="ruby-node">&quot;{#{map { |k,v| &quot;#{encoder.encode(k.to_s)}:#{encoder.encode(v, false)}&quot; } * ','}}&quot;</span>
+253:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003012">
+                    
+                    <a name="M003012"></a><b>except</b>(*keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Return a hash that includes everything but the given keys. This is useful
+for limiting a set of parameters to everything but a few known toggles:
+</p>
+<pre>
+  @person.update_attributes(params[:person].except(:admin))
+</pre>
+<p>
+If the receiver responds to <tt>convert_key</tt>, the method is called on
+each of the arguments. This allows <tt>except</tt> to play nice with hashes
+with indifferent access for instance:
+</p>
+<pre>
+  {:a =&gt; 1}.with_indifferent_access.except(:a)  # =&gt; {}
+  {:a =&gt; 1}.with_indifferent_access.except(&quot;a&quot;) # =&gt; {}
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003012_source')" id="l_M003012_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/1eecd9483b0439ab4913beea36f0d0e2aa0518c7/activesupport/lib/active_support/core_ext/hash/except.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003012_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/except.rb, line 14</span>
+14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">except</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+15:     <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">except!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+16:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003013">
+                    
+                    <a name="M003013"></a><b>except!</b>(*keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Replaces the hash without the given keys.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003013_source')" id="l_M003013_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/1eecd9483b0439ab4913beea36f0d0e2aa0518c7/activesupport/lib/active_support/core_ext/hash/except.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003013_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/except.rb, line 19</span>
+19:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">except!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+20:     <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>) }
+21:     <span class="ruby-keyword kw">self</span>
+22:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002993">
+                    
+                    <a name="M002993"></a><b>extract!</b>(*keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Removes and returns the key/value pairs matching the given keys.
+</p>
+<pre>
+  {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3, :d =&gt; 4}.extract!(:a, :b) # =&gt; {:a =&gt; 1, :b =&gt; 2}
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002993_source')" id="l_M002993_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/308595739c32609ac5b167ecdc6cb6cb4ec6c81f/activesupport/lib/active_support/core_ext/hash/slice.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002993_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/slice.rb, line 35</span>
+35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+36:     <span class="ruby-identifier">result</span> = {}
+37:     <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>) }
+38:     <span class="ruby-identifier">result</span>
+39:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003034">
+                    
+                    <a name="M003034"></a><b>extractable_options?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+By default, only instances of <a href="Hash.html">Hash</a> itself are
+extractable. Subclasses of <a href="Hash.html">Hash</a> may implement this
+method and return true to declare themselves as extractable. If a <a
+href="Hash.html">Hash</a> is extractable, <a
+href="Array.html#M003035">Array#extract_options!</a> pops it from the <a
+href="Array.html">Array</a> when it is the last element of the <a
+href="Array.html">Array</a>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003034_source')" id="l_M003034_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/a24a888afe5652e391ce2ea682596686af5ec58b/activesupport/lib/active_support/core_ext/array/extract_options.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003034_source" class="dyn-source">
+                        <pre>   <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/array/extract_options.rb, line 7</span>
+7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extractable_options?</span>
+8:     <span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">Hash</span>)
+9:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003015">
+                    
+                    <a name="M003015"></a><b>nested_under_indifferent_access</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Hash.html#M003014">with_indifferent_access</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003001">
+                    
+                    <a name="M003001"></a><b>reverse_merge</b>(other_hash)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Merges the caller into <tt>other_hash</tt>. For example,
+</p>
+<pre>
+  options = options.reverse_merge(:size =&gt; 25, :velocity =&gt; 10)
+</pre>
+<p>
+is equivalent to
+</p>
+<pre>
+  options = {:size =&gt; 25, :velocity =&gt; 10}.merge(options)
+</pre>
+<p>
+This is particularly useful for initializing an options hash with default
+values.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003001_source')" id="l_M003001_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/20768176292cbcb883ab152b4aa9ed8c664771cd/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003001_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/reverse_merge.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">other_hash</span>)
+13:     <span class="ruby-identifier">other_hash</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-keyword kw">self</span>)
+14:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003002">
+                    
+                    <a name="M003002"></a><b>reverse_merge!</b>(other_hash)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Destructive <tt><a href="Hash.html#M003001">reverse_merge</a></tt>.
+</p>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Hash.html#M003003">reverse_update</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003002_source')" id="l_M003002_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/20768176292cbcb883ab152b4aa9ed8c664771cd/activesupport/lib/active_support/core_ext/hash/reverse_merge.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003002_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/reverse_merge.rb, line 17</span>
+17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_merge!</span>(<span class="ruby-identifier">other_hash</span>)
+18:     <span class="ruby-comment cmt"># right wins if there is no left</span>
+19:     <span class="ruby-identifier">merge!</span>( <span class="ruby-identifier">other_hash</span> ){<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">left</span>,<span class="ruby-identifier">right</span><span class="ruby-operator">|</span> <span class="ruby-identifier">left</span> }
+20:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003003">
+                    
+                    <a name="M003003"></a><b>reverse_update</b>(other_hash)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Hash.html#M003002">reverse_merge!</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002991">
+                    
+                    <a name="M002991"></a><b>slice</b>(*keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Slice a hash to include only the given keys. This is useful for limiting an
+options hash to valid keys before passing to a method:
+</p>
+<pre>
+  def search(criteria = {})
+    assert_valid_keys(:mass, :velocity, :time)
+  end
+
+  search(options.slice(:mass, :velocity, :time))
+</pre>
+<p>
+If you have an array of keys you want to limit to, you should splat them:
+</p>
+<pre>
+  valid_keys = [:mass, :velocity, :time]
+  search(options.slice(*valid_keys))
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002991_source')" id="l_M002991_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/308595739c32609ac5b167ecdc6cb6cb4ec6c81f/activesupport/lib/active_support/core_ext/hash/slice.rb#L15" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002991_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/slice.rb, line 15</span>
+15:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+16:     <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">convert_key</span>(<span class="ruby-identifier">key</span>) } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:convert_key</span>)
+17:     <span class="ruby-identifier">hash</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+18:     <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">k</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>) }
+19:     <span class="ruby-identifier">hash</span>
+20:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002992">
+                    
+                    <a name="M002992"></a><b>slice!</b>(*keys)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Replaces the hash with only the given keys. Returns a hash contained the
+removed key/value pairs
+</p>
+<pre>
+  {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3, :d =&gt; 4}.slice!(:a, :b) # =&gt; {:c =&gt; 3, :d =&gt; 4}
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002992_source')" id="l_M002992_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/308595739c32609ac5b167ecdc6cb6cb4ec6c81f/activesupport/lib/active_support/core_ext/hash/slice.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002992_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/slice.rb, line 25</span>
+25:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+26:     <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">convert_key</span>(<span class="ruby-identifier">key</span>) } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:convert_key</span>)
+27:     <span class="ruby-identifier">omit</span> = <span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">keys</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">keys</span>)
+28:     <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+29:     <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">hash</span>)
+30:     <span class="ruby-identifier">omit</span>
+31:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002994">
+                    
+                    <a name="M002994"></a><b>stringify_keys</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Return a new hash with all keys converted to strings.
+</p>
+<pre>
+  { :name =&gt; 'Rob', :years =&gt; '28' }.stringify_keys
+  #=&gt; { &quot;name&quot; =&gt; &quot;Rob&quot;, &quot;years&quot; =&gt; &quot;28&quot; }
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002994_source')" id="l_M002994_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/keys.rb#L6" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002994_source" class="dyn-source">
+                        <pre>   <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/keys.rb, line 6</span>
+6:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stringify_keys</span>
+7:     <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">stringify_keys!</span>
+8:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002995">
+                    
+                    <a name="M002995"></a><b>stringify_keys!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Destructively convert all keys to strings. Same as <tt><a
+href="Hash.html#M002994">stringify_keys</a></tt>, but modifies
+<tt>self</tt>.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002995_source')" id="l_M002995_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/keys.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002995_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/keys.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stringify_keys!</span>
+13:     <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+14:       <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+15:     <span class="ruby-keyword kw">end</span>
+16:     <span class="ruby-keyword kw">self</span>
+17:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002996">
+                    
+                    <a name="M002996"></a><b>symbolize_keys</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Return a new hash with all keys converted to symbols, as long as they
+respond to <tt>to_sym</tt>.
+</p>
+<pre>
+  { 'name' =&gt; 'Rob', 'years' =&gt; '28' }.symbolize_keys
+  #=&gt; { :name =&gt; &quot;Rob&quot;, :years =&gt; &quot;28&quot; }
+</pre>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Hash.html#M002998">to_options</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002996_source')" id="l_M002996_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/keys.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002996_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/keys.rb, line 24</span>
+24:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">symbolize_keys</span>
+25:     <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">symbolize_keys!</span>
+26:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002997">
+                    
+                    <a name="M002997"></a><b>symbolize_keys!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Destructively convert all keys to symbols, as long as they respond to
+<tt>to_sym</tt>. Same as <tt><a
+href="Hash.html#M002996">symbolize_keys</a></tt>, but modifies
+<tt>self</tt>.
+</p>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Hash.html#M002999">to_options!</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002997_source')" id="l_M002997_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b2f73c40b8a995ed685fc76f2df724b15ead16b6/activesupport/lib/active_support/core_ext/hash/keys.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002997_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/keys.rb, line 30</span>
+30:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">symbolize_keys!</span>
+31:     <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+32:       <span class="ruby-keyword kw">self</span>[(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">key</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">key</span>] = <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+33:     <span class="ruby-keyword kw">end</span>
+34:     <span class="ruby-keyword kw">self</span>
+35:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002998">
+                    
+                    <a name="M002998"></a><b>to_options</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Hash.html#M002996">symbolize_keys</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002999">
+                    
+                    <a name="M002999"></a><b>to_options!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Hash.html#M002997">symbolize_keys!</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003162">
+                    
+                    <a name="M003162"></a><b>to_param</b>(namespace = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a string representation of the receiver suitable for use as a URL
+query string:
+</p>
+<pre>
+  {:name =&gt; 'David', :nationality =&gt; 'Danish'}.to_param
+  # =&gt; &quot;name=David&amp;nationality=Danish&quot;
+</pre>
+<p>
+An optional namespace can be passed to enclose the param names:
+</p>
+<pre>
+  {:name =&gt; 'David', :nationality =&gt; 'Danish'}.to_param('user')
+  # =&gt; &quot;user[name]=David&amp;user[nationality]=Danish&quot;
+</pre>
+<p>
+The string pairs &#8220;key=value&#8221; that conform the query string are
+sorted lexicographically in ascending order.
+</p>
+<p>
+This method is also aliased as <tt><a
+href="Hash.html#M003174">to_query</a></tt>.
+</p>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Hash.html#M003174">to_query</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003162_source')" id="l_M003162_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/a0d7247d1509762283c61182ad82c2eed8d54757/activesupport/lib/active_support/core_ext/object/to_param.rb#L50" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003162_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/object/to_param.rb, line 50</span>
+50:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>(<span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>)
+51:     <span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+52:       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_query</span>(<span class="ruby-identifier">namespace</span> <span class="ruby-value">? </span><span class="ruby-node">&quot;#{namespace}[#{key}]&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>)
+53:     <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">sort</span> <span class="ruby-operator">*</span> <span class="ruby-value str">'&amp;'</span>
+54:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003174">
+                    
+                    <a name="M003174"></a><b>to_query</b>(namespace = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Hash.html#M003162">to_param</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003008">
+                    
+                    <a name="M003008"></a><b>to_xml</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a string containing an XML representation of its receiver:
+</p>
+<pre>
+  {&quot;foo&quot; =&gt; 1, &quot;bar&quot; =&gt; 2}.to_xml
+  # =&gt;
+  # &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  # &lt;hash&gt;
+  #   &lt;foo type=&quot;integer&quot;&gt;1&lt;/foo&gt;
+  #   &lt;bar type=&quot;integer&quot;&gt;2&lt;/bar&gt;
+  # &lt;/hash&gt;
+</pre>
+<p>
+To do so, the method loops over the pairs and builds nodes that depend on
+the <em>values</em>. Given a pair <tt>key</tt>, <tt>value</tt>:
+</p>
+<ul>
+<li>If <tt>value</tt> is a hash there&#8217;s a recursive call with
+<tt>key</tt> as <tt>:root</tt>.
+
+</li>
+<li>If <tt>value</tt> is an array there&#8217;s a recursive call with
+<tt>key</tt> as <tt>:root</tt>, and <tt>key</tt> singularized as
+<tt>:children</tt>.
+
+</li>
+<li>If <tt>value</tt> is a callable object it must expect one or two arguments.
+Depending on the arity, the callable is invoked with the <tt>options</tt>
+hash as first argument with <tt>key</tt> as <tt>:root</tt>, and
+<tt>key</tt> singularized as second argument. The callable can add nodes by
+using <tt>options[:builder]</tt>.
+
+<pre>
+  &quot;foo&quot;.to_xml(lambda { |options, key| options[:builder].b(key) })
+  # =&gt; &quot;&lt;b&gt;foo&lt;/b&gt;&quot;
+</pre>
+</li>
+<li>If <tt>value</tt> responds to <tt><a
+href="Hash.html#M003008">to_xml</a></tt> the method is invoked with
+<tt>key</tt> as <tt>:root</tt>.
+
+<pre>
+  class Foo
+    def to_xml(options)
+      options[:builder].bar &quot;fooing!&quot;
+    end
+  end
+
+  {:foo =&gt; Foo.new}.to_xml(:skip_instruct =&gt; true)
+  # =&gt; &quot;&lt;hash&gt;&lt;bar&gt;fooing!&lt;/bar&gt;&lt;/hash&gt;&quot;
+</pre>
+</li>
+<li>Otherwise, a node with <tt>key</tt> as tag is created with a string
+representation of <tt>value</tt> as text node. If <tt>value</tt> is
+<tt>nil</tt> an attribute &#8220;nil&#8221; set to &#8220;true&#8221; is
+added. Unless the option <tt>:skip_types</tt> exists and is true, an
+attribute &#8220;type&#8221; is added as well according to the following
+mapping:
+
+<pre>
+  XML_TYPE_NAMES = {
+    &quot;Symbol&quot;     =&gt; &quot;symbol&quot;,
+    &quot;Fixnum&quot;     =&gt; &quot;integer&quot;,
+    &quot;Bignum&quot;     =&gt; &quot;integer&quot;,
+    &quot;BigDecimal&quot; =&gt; &quot;decimal&quot;,
+    &quot;Float&quot;      =&gt; &quot;float&quot;,
+    &quot;TrueClass&quot;  =&gt; &quot;boolean&quot;,
+    &quot;FalseClass&quot; =&gt; &quot;boolean&quot;,
+    &quot;Date&quot;       =&gt; &quot;date&quot;,
+    &quot;DateTime&quot;   =&gt; &quot;datetime&quot;,
+    &quot;Time&quot;       =&gt; &quot;datetime&quot;
+  }
+</pre>
+</li>
+</ul>
+<p>
+By default the root node is &#8220;hash&#8221;, but that&#8217;s
+configurable via the <tt>:root</tt> option.
+</p>
+<p>
+The default XML builder is a fresh instance of <tt>Builder::XmlMarkup</tt>.
+You can configure your own builder with the <tt>:builder</tt> option. The
+method also accepts options like <tt>:dasherize</tt> and friends, they are
+forwarded to the builder.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003008_source')" id="l_M003008_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/83555a539891d18c37e788ebd5bdc819d4cfe7f5/activesupport/lib/active_support/core_ext/hash/conversions.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003008_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/conversions.rb, line 69</span>
+69:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml</span>(<span class="ruby-identifier">options</span> = {})
+70:     <span class="ruby-identifier">require</span> <span class="ruby-value str">'active_support/builder'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">Builder</span>)
+71: 
+72:     <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+73:     <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:indent</span>]  <span class="ruby-operator">||=</span> <span class="ruby-value">2</span>
+74:     <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root</span>]    <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;hash&quot;</span>
+75:     <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:builder</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Builder</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMarkup</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:indent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:indent</span>])
+76: 
+77:     <span class="ruby-identifier">builder</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:builder</span>]
+78:     <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">instruct!</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:skip_instruct</span>)
+79: 
+80:     <span class="ruby-identifier">root</span> = <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMini</span>.<span class="ruby-identifier">rename_key</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root</span>].<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">options</span>)
+81: 
+82:     <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">:method_missing</span>, <span class="ruby-identifier">root</span>) <span class="ruby-keyword kw">do</span>
+83:       <span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMini</span>.<span class="ruby-identifier">to_tag</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span>) }
+84:       <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">builder</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+85:     <span class="ruby-keyword kw">end</span>
+86:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M003014">
+                    
+                    <a name="M003014"></a><b>with_indifferent_access</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an <tt>ActiveSupport::HashWithIndifferentAccess</tt> out of its
+receiver:
+</p>
+<pre>
+  {:a =&gt; 1}.with_indifferent_access[&quot;a&quot;] # =&gt; 1
+</pre>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Hash.html#M003015">nested_under_indifferent_access</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M003014_source')" id="l_M003014_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/e6b59432eae0171db2fa39533a334a904c067a20/activesupport/lib/active_support/core_ext/hash/indifferent_access.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M003014_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/indifferent_access.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">with_indifferent_access</span>
+10:     <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">HashWithIndifferentAccess</span>.<span class="ruby-identifier">new_from_hash_copying_default</span>(<span class="ruby-keyword kw">self</span>)
+11:   <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

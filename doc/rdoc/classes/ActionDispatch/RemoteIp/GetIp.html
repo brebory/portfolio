@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::RemoteIp::GetIp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::RemoteIp::GetIp 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/actionpack/lib/action_dispatch/middleware/remote_ip_rb.html">actionpack/lib/action_dispatch/middleware/remote_ip.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002289">calculate_ip</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002291">ips_from</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002288">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002290">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002288">
+                    
+                    <a name="M002288"></a><b>new</b>(env, middleware)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002288_source')" id="l_M002288_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c3ae1d2aec400d6aaea78bd94eb7845b71f1ec15/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002288_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/remote_ip.rb, line 35</span>
+35:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">middleware</span>)
+36:         <span class="ruby-ivar">@env</span>          = <span class="ruby-identifier">env</span>
+37:         <span class="ruby-ivar">@middleware</span>   = <span class="ruby-identifier">middleware</span>
+38:         <span class="ruby-ivar">@calculated_ip</span> = <span class="ruby-keyword kw">false</span>
+39:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002289">
+                    
+                    <a name="M002289"></a><b>calculate_ip</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Determines originating IP address. REMOTE_ADDR is the standard but will be
+wrong if the user is behind a proxy. Proxies will set HTTP_CLIENT_IP and/or
+HTTP_X_FORWARDED_FOR, so we prioritize those. HTTP_X_FORWARDED_FOR may be a
+comma-delimited list in the case of multiple chained proxies. The last
+address which is not a known proxy will be the originating IP.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002289_source')" id="l_M002289_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c3ae1d2aec400d6aaea78bd94eb7845b71f1ec15/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002289_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/remote_ip.rb, line 47</span>
+47:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calculate_ip</span>
+48:         <span class="ruby-identifier">client_ip</span>     = <span class="ruby-ivar">@env</span>[<span class="ruby-value str">'HTTP_CLIENT_IP'</span>]
+49:         <span class="ruby-identifier">forwarded_ips</span> = <span class="ruby-identifier">ips_from</span>(<span class="ruby-value str">'HTTP_X_FORWARDED_FOR'</span>)
+50:         <span class="ruby-identifier">remote_addrs</span>  = <span class="ruby-identifier">ips_from</span>(<span class="ruby-value str">'REMOTE_ADDR'</span>)
+51: 
+52:         <span class="ruby-identifier">check_ip</span> = <span class="ruby-identifier">client_ip</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@middleware</span>.<span class="ruby-identifier">check_ip</span>
+53:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">check_ip</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">forwarded_ips</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">client_ip</span>)
+54:           <span class="ruby-comment cmt"># We don't know which came from the proxy, and which from the user</span>
+55:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">IpSpoofAttackError</span>, <span class="ruby-value str">&quot;IP spoofing attack?!&quot;</span> \
+56:             <span class="ruby-node">&quot;HTTP_CLIENT_IP=#{@env['HTTP_CLIENT_IP'].inspect}&quot;</span> \
+57:             <span class="ruby-node">&quot;HTTP_X_FORWARDED_FOR=#{@env['HTTP_X_FORWARDED_FOR'].inspect}&quot;</span>
+58:         <span class="ruby-keyword kw">end</span>
+59: 
+60:         <span class="ruby-identifier">not_proxy</span> = <span class="ruby-identifier">client_ip</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">forwarded_ips</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">remote_addrs</span>.<span class="ruby-identifier">first</span>
+61: 
+62:         <span class="ruby-comment cmt"># Return first REMOTE_ADDR if there are no other options</span>
+63:         <span class="ruby-identifier">not_proxy</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">ips_from</span>(<span class="ruby-value str">'REMOTE_ADDR'</span>, <span class="ruby-identifier">:allow_proxies</span>).<span class="ruby-identifier">first</span>
+64:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002290">
+                    
+                    <a name="M002290"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002290_source')" id="l_M002290_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c3ae1d2aec400d6aaea78bd94eb7845b71f1ec15/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002290_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/remote_ip.rb, line 66</span>
+66:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+67:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@ip</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@calculated_ip</span>
+68:         <span class="ruby-ivar">@calculated_ip</span> = <span class="ruby-keyword kw">true</span>
+69:         <span class="ruby-ivar">@ip</span> = <span class="ruby-identifier">calculate_ip</span>
+70:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002291">
+                    
+                    <a name="M002291"></a><b>ips_from</b>(header, allow_proxies = false)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002291_source')" id="l_M002291_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c3ae1d2aec400d6aaea78bd94eb7845b71f1ec15/actionpack/lib/action_dispatch/middleware/remote_ip.rb#L74" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002291_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/remote_ip.rb, line 74</span>
+74:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ips_from</span>(<span class="ruby-identifier">header</span>, <span class="ruby-identifier">allow_proxies</span> = <span class="ruby-keyword kw">false</span>)
+75:         <span class="ruby-identifier">ips</span> = <span class="ruby-ivar">@env</span>[<span class="ruby-identifier">header</span>] <span class="ruby-operator">?</span> <span class="ruby-ivar">@env</span>[<span class="ruby-identifier">header</span>].<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[,\s]+/</span>) <span class="ruby-operator">:</span> []
+76:         <span class="ruby-identifier">allow_proxies</span> <span class="ruby-value">? </span><span class="ruby-identifier">ips</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">ips</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ip</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ip</span> <span class="ruby-operator">=~</span> <span class="ruby-ivar">@middleware</span>.<span class="ruby-identifier">proxies</span> }
+77:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

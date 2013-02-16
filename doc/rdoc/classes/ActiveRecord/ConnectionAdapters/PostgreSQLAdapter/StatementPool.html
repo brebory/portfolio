@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::ConnectionAdapters::PostgreSQLAdapter::StatementPool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActiveRecord::ConnectionAdapters::PostgreSQLAdapter::StatementPool 
+            
+                <span class="parent">&lt; 
+                    
+                    ConnectionAdapters::StatementPool
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/activerecord/lib/active_record/connection_adapters/postgresql_adapter_rb.html">activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001061">[]</a>,</li>
+                
+                <li><a href="#M001064">[]=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001065">clear</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001066">delete</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001059">each</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001060">key?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001062">length</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001058">new</a>,</li>
+                
+                <li><a href="#M001063">next_key</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001058">
+                    
+                    <a name="M001058"></a><b>new</b>(connection, max)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001058_source')" id="l_M001058_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L256" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001058_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 256</span>
+256:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">connection</span>, <span class="ruby-identifier">max</span>)
+257:           <span class="ruby-keyword kw">super</span>
+258:           <span class="ruby-ivar">@counter</span> = <span class="ruby-value">0</span>
+259:           <span class="ruby-ivar">@cache</span>   = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>,<span class="ruby-identifier">pid</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">pid</span>] = {} }
+260:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001061">
+                    
+                    <a name="M001061"></a><b>[]</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001061_source')" id="l_M001061_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L264" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001061_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 264</span>
+264:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>);      <span class="ruby-identifier">cache</span>[<span class="ruby-identifier">key</span>]; <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001064">
+                    
+                    <a name="M001064"></a><b>[]=</b>(sql, key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001064_source')" id="l_M001064_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L271" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001064_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 271</span>
+271:         <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">key</span>)
+272:           <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@max</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">size</span>
+273:             <span class="ruby-identifier">dealloc</span>(<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">last</span>)
+274:           <span class="ruby-keyword kw">end</span>
+275:           <span class="ruby-ivar">@counter</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+276:           <span class="ruby-identifier">cache</span>[<span class="ruby-identifier">sql</span>] = <span class="ruby-identifier">key</span>
+277:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001065">
+                    
+                    <a name="M001065"></a><b>clear</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001065_source')" id="l_M001065_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L279" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001065_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 279</span>
+279:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+280:           <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">stmt_key</span><span class="ruby-operator">|</span>
+281:             <span class="ruby-identifier">dealloc</span> <span class="ruby-identifier">stmt_key</span>
+282:           <span class="ruby-keyword kw">end</span>
+283:           <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">clear</span>
+284:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001066">
+                    
+                    <a name="M001066"></a><b>delete</b>(sql_key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001066_source')" id="l_M001066_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L286" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001066_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 286</span>
+286:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">sql_key</span>)
+287:           <span class="ruby-identifier">dealloc</span> <span class="ruby-identifier">cache</span>[<span class="ruby-identifier">sql_key</span>]
+288:           <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">sql_key</span>
+289:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001059">
+                    
+                    <a name="M001059"></a><b>each</b>(&amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001059_source')" id="l_M001059_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L262" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001059_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 262</span>
+262:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>); <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001060">
+                    
+                    <a name="M001060"></a><b>key?</b>(key)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001060_source')" id="l_M001060_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L263" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001060_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 263</span>
+263:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>);    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>); <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001062">
+                    
+                    <a name="M001062"></a><b>length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001062_source')" id="l_M001062_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L265" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001062_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 265</span>
+265:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>;       <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">length</span>; <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001063">
+                    
+                    <a name="M001063"></a><b>next_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001063_source')" id="l_M001063_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b6727a1ed3ca35d4788f52f0bea49952a16cd41e/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb#L267" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001063_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb, line 267</span>
+267:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_key</span>
+268:           <span class="ruby-node">&quot;a#{@counter + 1}&quot;</span>
+269:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

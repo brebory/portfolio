@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::AttributeAssignment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            ActiveRecord::AttributeAssignment 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activerecord/lib/active_record/attribute_assignment_rb.html">activerecord/lib/active_record/attribute_assignment.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000690">assign_attributes</a>,</li>
+                
+                <li><a href="#M000689">attributes=</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000691">mass_assignment_options</a>,</li>
+                
+                <li><a href="#M000692">mass_assignment_role</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Rails.html">Rails</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="AttributeAssignment/ClassMethods.html">ActiveRecord::AttributeAssignment::ClassMethods</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000690">
+                    
+                    <a name="M000690"></a><b>assign_attributes</b>(new_attributes, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Allows you to set all the attributes for a particular mass-assignment
+security role by passing in a hash of attributes with keys matching the
+attribute names (which again matches the column names) and the role name
+using the :as option.
+</p>
+<p>
+To bypass mass-assignment security you can use the :without_protection =>
+true option.
+</p>
+<pre>
+  class User &lt; ActiveRecord::Base
+    attr_accessible :name
+    attr_accessible :name, :is_admin, :as =&gt; :admin
+  end
+
+  user = User.new
+  user.assign_attributes({ :name =&gt; 'Josh', :is_admin =&gt; true })
+  user.name       # =&gt; &quot;Josh&quot;
+  user.is_admin?  # =&gt; false
+
+  user = User.new
+  user.assign_attributes({ :name =&gt; 'Josh', :is_admin =&gt; true }, :as =&gt; :admin)
+  user.name       # =&gt; &quot;Josh&quot;
+  user.is_admin?  # =&gt; true
+
+  user = User.new
+  user.assign_attributes({ :name =&gt; 'Josh', :is_admin =&gt; true }, :without_protection =&gt; true)
+  user.name       # =&gt; &quot;Josh&quot;
+  user.is_admin?  # =&gt; true
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000690_source')" id="l_M000690_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/ceb33f84933639d3b61aac62e5e71fd087ab65ed/activerecord/lib/active_record/attribute_assignment.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000690_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activerecord/lib/active_record/attribute_assignment.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assign_attributes</span>(<span class="ruby-identifier">new_attributes</span>, <span class="ruby-identifier">options</span> = {})
+67:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">new_attributes</span>
+68: 
+69:       <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">new_attributes</span>.<span class="ruby-identifier">stringify_keys</span>
+70:       <span class="ruby-identifier">multi_parameter_attributes</span> = []
+71:       <span class="ruby-identifier">nested_parameter_attributes</span> = []
+72:       <span class="ruby-ivar">@mass_assignment_options</span> = <span class="ruby-identifier">options</span>
+73: 
+74:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:without_protection</span>]
+75:         <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">sanitize_for_mass_assignment</span>(<span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">mass_assignment_role</span>)
+76:       <span class="ruby-keyword kw">end</span>
+77: 
+78:       <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+79:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">&quot;(&quot;</span>)
+80:           <span class="ruby-identifier">multi_parameter_attributes</span> <span class="ruby-operator">&lt;&lt;</span> [ <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> ]
+81:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>)
+82:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+83:             <span class="ruby-identifier">nested_parameter_attributes</span> <span class="ruby-operator">&lt;&lt;</span> [ <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> ]
+84:           <span class="ruby-keyword kw">else</span>
+85:             <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>)
+86:           <span class="ruby-keyword kw">end</span>
+87:         <span class="ruby-keyword kw">else</span>
+88:           <span class="ruby-identifier">raise</span>(<span class="ruby-constant">UnknownAttributeError</span>, <span class="ruby-node">&quot;unknown attribute: #{k}&quot;</span>)
+89:         <span class="ruby-keyword kw">end</span>
+90:       <span class="ruby-keyword kw">end</span>
+91: 
+92:       <span class="ruby-comment cmt"># assign any deferred nested attributes after the base attributes have been set</span>
+93:       <span class="ruby-identifier">nested_parameter_attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+94:         <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>)
+95:       <span class="ruby-keyword kw">end</span>
+96: 
+97:       <span class="ruby-ivar">@mass_assignment_options</span> = <span class="ruby-keyword kw">nil</span>
+98:       <span class="ruby-identifier">assign_multiparameter_attributes</span>(<span class="ruby-identifier">multi_parameter_attributes</span>)
+99:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000689">
+                    
+                    <a name="M000689"></a><b>attributes=</b>(new_attributes)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Allows you to set all the attributes at once by passing in a hash with keys
+matching the attribute names (which again matches the column names).
+</p>
+<p>
+If any attributes are protected by either <tt>attr_protected</tt> or
+<tt>attr_accessible</tt> then only settable attributes will be assigned.
+</p>
+<pre>
+  class User &lt; ActiveRecord::Base
+    attr_protected :is_admin
+  end
+
+  user = User.new
+  user.attributes = { :username =&gt; 'Phusion', :is_admin =&gt; true }
+  user.username   # =&gt; &quot;Phusion&quot;
+  user.is_admin?  # =&gt; false
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000689_source')" id="l_M000689_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/ceb33f84933639d3b61aac62e5e71fd087ab65ed/activerecord/lib/active_record/attribute_assignment.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000689_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File activerecord/lib/active_record/attribute_assignment.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attributes=</span>(<span class="ruby-identifier">new_attributes</span>)
+34:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">new_attributes</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+35: 
+36:       <span class="ruby-identifier">assign_attributes</span>(<span class="ruby-identifier">new_attributes</span>)
+37:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000691">
+                    
+                    <a name="M000691"></a><b>mass_assignment_options</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000691_source')" id="l_M000691_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/ceb33f84933639d3b61aac62e5e71fd087ab65ed/activerecord/lib/active_record/attribute_assignment.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000691_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/attribute_assignment.rb, line 103</span>
+103:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mass_assignment_options</span>
+104:       <span class="ruby-ivar">@mass_assignment_options</span> <span class="ruby-operator">||=</span> {}
+105:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000692">
+                    
+                    <a name="M000692"></a><b>mass_assignment_role</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000692_source')" id="l_M000692_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/ceb33f84933639d3b61aac62e5e71fd087ab65ed/activerecord/lib/active_record/attribute_assignment.rb#L107" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000692_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File activerecord/lib/active_record/attribute_assignment.rb, line 107</span>
+107:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mass_assignment_role</span>
+108:       <span class="ruby-identifier">mass_assignment_options</span>[<span class="ruby-identifier">:as</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">:default</span>
+109:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

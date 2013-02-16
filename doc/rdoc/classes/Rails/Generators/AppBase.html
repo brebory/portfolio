@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Rails::Generators::AppBase</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Rails::Generators::AppBase 
+            
+                <span class="parent">&lt; 
+                    
+                    Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/railties/lib/rails/generators/app_base_rb.html">railties/lib/rails/generators/app_base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000240">add_shared_options_for</a>,</li>
+                
+                <li><a href="#M000245">apply_rails_template</a>,</li>
+                
+                <li><a href="#M000254">assets_gemfile_entry</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000243">build</a>,</li>
+                
+                <li><a href="#M000242">builder</a>,</li>
+                
+                <li><a href="#M000257">bundle_command</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000249">comment_if</a>,</li>
+                
+                <li><a href="#M000252">convert_database_option_for_jruby</a>,</li>
+                
+                <li><a href="#M000244">create_root</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000247">database_gemfile_entry</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000259">empty_directory_with_gitkeep</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000251">gem_for_database</a>,</li>
+                
+                <li><a href="#M000260">git_keep</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000248">include_all_railties?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>J</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000255">javascript_gemfile_entry</a>,</li>
+                
+                <li><a href="#M000256">javascript_runtime_gemfile_entry</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000261">key_value</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000241">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000250">rails_gemfile_entry</a>,</li>
+                
+                <li><a href="#M000253">ruby_debugger_gemfile_entry</a>,</li>
+                
+                <li><a href="#M000258">run_bundle</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000246">set_default_accessors!</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">DATABASES</td>
+            <td>=</td>
+            <td class="attr-value">%w( mysql oracle postgresql sqlite3 frontbase ibm_db sqlserver )</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">JDBC_DATABASES</td>
+            <td>=</td>
+            <td class="attr-value">%w( jdbcmysql jdbcsqlite3 jdbcpostgresql jdbc )</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>rails_template</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000240">
+                    
+                    <a name="M000240"></a><b>add_shared_options_for</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000240_source')" id="l_M000240_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000240_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 21</span>
+21:       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add_shared_options_for</span>(<span class="ruby-identifier">name</span>)
+22:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:builder</span>,            <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-b&quot;</span>,
+23:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Path to a #{name} builder (can be a filesystem path or URL)&quot;</span>
+24: 
+25:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:template</span>,           <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-m&quot;</span>,
+26:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Path to an #{name} template (can be a filesystem path or URL)&quot;</span>
+27: 
+28:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_gemfile</span>,       <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+29:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Don't create a Gemfile&quot;</span>
+30: 
+31:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_bundle</span>,        <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+32:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Don't run bundle install&quot;</span>
+33: 
+34:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_git</span>,           <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-G&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+35:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Skip Git ignores and keeps&quot;</span>
+36: 
+37:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_active_record</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-O&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+38:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Skip Active Record files&quot;</span>
+39: 
+40:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_sprockets</span>,     <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-S&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+41:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Skip Sprockets files&quot;</span>
+42: 
+43:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:database</span>,           <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-d&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;sqlite3&quot;</span>,
+44:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Preconfigure for selected database (options: #{DATABASES.join('/')})&quot;</span>
+45: 
+46:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:javascript</span>,         <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'-j'</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'jquery'</span>,
+47:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Preconfigure for selected JavaScript library'</span>
+48: 
+49:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_javascript</span>,    <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-J&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+50:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Skip JavaScript files&quot;</span>
+51: 
+52:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:dev</span>,                <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+53:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Setup the #{name} with Gemfile pointing to your Rails checkout&quot;</span>
+54: 
+55:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:edge</span>,               <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+56:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Setup the #{name} with Gemfile pointing to Rails repository&quot;</span>
+57: 
+58:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:skip_test_unit</span>,     <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-T&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+59:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Skip Test::Unit files&quot;</span>
+60: 
+61:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:help</span>,               <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:aliases</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-identifier">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:rails</span>,
+62:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Show this help message and quit&quot;</span>
+63: 
+64:         <span class="ruby-identifier">class_option</span> <span class="ruby-identifier">:old_style_hash</span>,     <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:boolean</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+65:                                           <span class="ruby-identifier">:desc</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Force using old style hash (:foo =&gt; 'bar') on Ruby &gt;= 1.9&quot;</span>
+66:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000241">
+                    
+                    <a name="M000241"></a><b>new</b>(*args)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000241_source')" id="l_M000241_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000241_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 68</span>
+68:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+69:         <span class="ruby-ivar">@original_wd</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+70:         <span class="ruby-keyword kw">super</span>
+71:         <span class="ruby-identifier">convert_database_option_for_jruby</span>
+72:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000245">
+                    
+                    <a name="M000245"></a><b>apply_rails_template</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000245_source')" id="l_M000245_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000245_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 108</span>
+108:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">apply_rails_template</span>
+109:         <span class="ruby-identifier">apply</span> <span class="ruby-identifier">rails_template</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rails_template</span>
+110:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Thor</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+111:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;The template [#{rails_template}] could not be loaded. Error: #{e}&quot;</span>
+112:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000254">
+                    
+                    <a name="M000254"></a><b>assets_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000254_source')" id="l_M000254_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L198" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000254_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 198</span>
+198:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assets_gemfile_entry</span>
+199:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_sprockets</span>]
+200: 
+201:         <span class="ruby-identifier">gemfile</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dev?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">edge?</span>
+202:           <span class="ruby-value str">&quot;# Gems used only for assets and not required\n# in production environments by default.\ngroup :assets do\ngem 'sass-rails',   :git =&gt; 'git://github.com/rails/sass-rails.git', :branch =&gt; '3-2-stable'\ngem 'coffee-rails', :git =&gt; 'git://github.com/rails/coffee-rails.git', :branch =&gt; '3-2-stable'\n\n# See https://github.com/sstephenson/execjs#readme for more supported runtimes\n\#{javascript_runtime_gemfile_entry}\ngem 'uglifier', '&gt;= 1.0.3'\nend\n&quot;</span>
+203:         <span class="ruby-keyword kw">else</span>
+204:           <span class="ruby-value str">&quot;# Gems used only for assets and not required\n# in production environments by default.\ngroup :assets do\ngem 'sass-rails',   '~&gt; 3.2.3'\ngem 'coffee-rails', '~&gt; 3.2.1'\n\n# See https://github.com/sstephenson/execjs#readme for more supported runtimes\n\#{javascript_runtime_gemfile_entry}\ngem 'uglifier', '&gt;= 1.0.3'\nend\n&quot;</span>
+205:         <span class="ruby-keyword kw">end</span>
+206: 
+207:         <span class="ruby-identifier">gemfile</span>.<span class="ruby-identifier">strip_heredoc</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^[ \t]*$/</span>, <span class="ruby-value str">''</span>)
+208:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000243">
+                    
+                    <a name="M000243"></a><b>build</b>(meth, *args)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000243_source')" id="l_M000243_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L95" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000243_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 95</span>
+95:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+96:         <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">meth</span>)
+97:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000242">
+                    
+                    <a name="M000242"></a><b>builder</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000242_source')" id="l_M000242_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000242_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 76</span>
+76:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">builder</span>
+77:         <span class="ruby-ivar">@builder</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+78:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:builder</span>]
+79:             <span class="ruby-keyword kw">if</span> <span class="ruby-constant">URI</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>)
+80:               <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;Accept&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;application/x-thor-template&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">read</span> }
+81:             <span class="ruby-keyword kw">else</span>
+82:               <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>, <span class="ruby-ivar">@original_wd</span>)) {<span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">read</span> }
+83:             <span class="ruby-keyword kw">end</span>
+84: 
+85:             <span class="ruby-identifier">prok</span> = <span class="ruby-identifier">eval</span>(<span class="ruby-node">&quot;proc { #{contents} }&quot;</span>, <span class="ruby-constant">TOPLEVEL_BINDING</span>, <span class="ruby-identifier">path</span>, <span class="ruby-value">1</span>)
+86:             <span class="ruby-identifier">instance_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">prok</span>)
+87:           <span class="ruby-keyword kw">end</span>
+88: 
+89:           <span class="ruby-identifier">builder_class</span> = <span class="ruby-identifier">get_builder_class</span>
+90:           <span class="ruby-identifier">builder_class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:include</span>, <span class="ruby-constant">ActionMethods</span>)
+91:           <span class="ruby-identifier">builder_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+92:         <span class="ruby-keyword kw">end</span>
+93:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000257">
+                    
+                    <a name="M000257"></a><b>bundle_command</b>(command)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000257_source')" id="l_M000257_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L246" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000257_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 246</span>
+246:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bundle_command</span>(<span class="ruby-identifier">command</span>)
+247:         <span class="ruby-identifier">say_status</span> <span class="ruby-identifier">:run</span>, <span class="ruby-node">&quot;bundle #{command}&quot;</span>
+248: 
+249:         <span class="ruby-comment cmt"># We are going to shell out rather than invoking Bundler::CLI.new(command)</span>
+250:         <span class="ruby-comment cmt"># because `rails new` loads the Thor gem and on the other hand bundler uses</span>
+251:         <span class="ruby-comment cmt"># its own vendored Thor, which could be a different version. Running both</span>
+252:         <span class="ruby-comment cmt"># things in the same process is a recipe for a night with paracetamol.</span>
+253:         <span class="ruby-comment cmt">#</span>
+254:         <span class="ruby-comment cmt"># We use backticks and #print here instead of vanilla #system because it</span>
+255:         <span class="ruby-comment cmt"># is easier to silence stdout in the existing test suite this way. The</span>
+256:         <span class="ruby-comment cmt"># end-user gets the bundler commands called anyway, so no big deal.</span>
+257:         <span class="ruby-comment cmt">#</span>
+258:         <span class="ruby-comment cmt"># Thanks to James Tucker for the Gem tricks involved in this call.</span>
+259:         <span class="ruby-identifier">print</span> <span class="ruby-node">`&quot;#{Gem.ruby}&quot; -rubygems &quot;#{Gem.bin_path('bundler', 'bundle')}&quot; #{command}`</span>
+260:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000249">
+                    
+                    <a name="M000249"></a><b>comment_if</b>(value)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000249_source')" id="l_M000249_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L133" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000249_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 133</span>
+133:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">comment_if</span>(<span class="ruby-identifier">value</span>)
+134:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">value</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">'# '</span> <span class="ruby-operator">:</span> <span class="ruby-value str">''</span>
+135:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000252">
+                    
+                    <a name="M000252"></a><b>convert_database_option_for_jruby</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000252_source')" id="l_M000252_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L179" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000252_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 179</span>
+179:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert_database_option_for_jruby</span>
+180:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">JRUBY_VERSION</span>)
+181:           <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>]
+182:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;oracle&quot;</span>     <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">replace</span> <span class="ruby-value str">&quot;jdbc&quot;</span>
+183:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;postgresql&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">replace</span> <span class="ruby-value str">&quot;jdbcpostgresql&quot;</span>
+184:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;mysql&quot;</span>      <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">replace</span> <span class="ruby-value str">&quot;jdbcmysql&quot;</span>
+185:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;sqlite3&quot;</span>    <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">replace</span> <span class="ruby-value str">&quot;jdbcsqlite3&quot;</span>
+186:           <span class="ruby-keyword kw">end</span>
+187:         <span class="ruby-keyword kw">end</span>
+188:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000244">
+                    
+                    <a name="M000244"></a><b>create_root</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000244_source')" id="l_M000244_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L99" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000244_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 99</span>
+ 99:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_root</span>
+100:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destination_root</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">app_path</span>, <span class="ruby-identifier">destination_root</span>)
+101:         <span class="ruby-identifier">valid_const?</span>
+102: 
+103:         <span class="ruby-identifier">empty_directory</span> <span class="ruby-value str">'.'</span>
+104:         <span class="ruby-identifier">set_default_accessors!</span>
+105:         <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cd</span>(<span class="ruby-identifier">destination_root</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:pretend</span>]
+106:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000247">
+                    
+                    <a name="M000247"></a><b>database_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000247_source')" id="l_M000247_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L125" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000247_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 125</span>
+125:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">database_gemfile_entry</span>
+126:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_active_record</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;gem '#{gem_for_database}'\n&quot;</span>
+127:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000259">
+                    
+                    <a name="M000259"></a><b>empty_directory_with_gitkeep</b>(destination, config = {})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000259_source')" id="l_M000259_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L266" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000259_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 266</span>
+266:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty_directory_with_gitkeep</span>(<span class="ruby-identifier">destination</span>, <span class="ruby-identifier">config</span> = {})
+267:         <span class="ruby-identifier">empty_directory</span>(<span class="ruby-identifier">destination</span>, <span class="ruby-identifier">config</span>)
+268:         <span class="ruby-identifier">git_keep</span>(<span class="ruby-identifier">destination</span>)
+269:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000251">
+                    
+                    <a name="M000251"></a><b>gem_for_database</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000251_source')" id="l_M000251_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L163" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000251_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 163</span>
+163:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gem_for_database</span>
+164:         <span class="ruby-comment cmt"># %w( mysql oracle postgresql sqlite3 frontbase ibm_db sqlserver jdbcmysql jdbcsqlite3 jdbcpostgresql )</span>
+165:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>]
+166:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;oracle&quot;</span>         <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;ruby-oci8&quot;</span>
+167:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;postgresql&quot;</span>     <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;pg&quot;</span>
+168:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;frontbase&quot;</span>      <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;ruby-frontbase&quot;</span>
+169:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;mysql&quot;</span>          <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;mysql2&quot;</span>
+170:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;sqlserver&quot;</span>      <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;activerecord-sqlserver-adapter&quot;</span>
+171:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;jdbcmysql&quot;</span>      <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;activerecord-jdbcmysql-adapter&quot;</span>
+172:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;jdbcsqlite3&quot;</span>    <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;activerecord-jdbcsqlite3-adapter&quot;</span>
+173:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;jdbcpostgresql&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;activerecord-jdbcpostgresql-adapter&quot;</span>
+174:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;jdbc&quot;</span>           <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;activerecord-jdbc-adapter&quot;</span>
+175:         <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:database</span>]
+176:         <span class="ruby-keyword kw">end</span>
+177:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000260">
+                    
+                    <a name="M000260"></a><b>git_keep</b>(destination)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000260_source')" id="l_M000260_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L271" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000260_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 271</span>
+271:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">git_keep</span>(<span class="ruby-identifier">destination</span>)
+272:         <span class="ruby-identifier">create_file</span>(<span class="ruby-node">&quot;#{destination}/.gitkeep&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_git</span>]
+273:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000248">
+                    
+                    <a name="M000248"></a><b>include_all_railties?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000248_source')" id="l_M000248_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L129" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000248_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 129</span>
+129:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include_all_railties?</span>
+130:         <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_active_record</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_test_unit</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_sprockets</span>]
+131:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000255">
+                    
+                    <a name="M000255"></a><b>javascript_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000255_source')" id="l_M000255_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L234" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000255_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 234</span>
+234:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">javascript_gemfile_entry</span>
+235:         <span class="ruby-node">&quot;gem '#{options[:javascript]}-rails'&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_javascript</span>]
+236:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000256">
+                    
+                    <a name="M000256"></a><b>javascript_runtime_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000256_source')" id="l_M000256_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L238" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000256_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 238</span>
+238:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">javascript_runtime_gemfile_entry</span>
+239:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">JRUBY_VERSION</span>)
+240:           <span class="ruby-value str">&quot;gem 'therubyrhino'\n&quot;</span>
+241:         <span class="ruby-keyword kw">else</span>
+242:           <span class="ruby-value str">&quot;# gem 'therubyracer', :platforms =&gt; :ruby\n&quot;</span>
+243:         <span class="ruby-keyword kw">end</span>
+244:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000261">
+                    
+                    <a name="M000261"></a><b>key_value</b>(key, value)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns Ruby 1.9 style key-value pair if current code is running on Ruby
+1.9.x. Returns the old-style (with hash rocket) otherwise.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000261_source')" id="l_M000261_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L277" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000261_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 277</span>
+277:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_value</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+278:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:old_style_hash</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value str">'1.9'</span>
+279:           <span class="ruby-node">&quot;:#{key} =&gt; #{value}&quot;</span>
+280:         <span class="ruby-keyword kw">else</span>
+281:           <span class="ruby-node">&quot;#{key}: #{value}&quot;</span>
+282:         <span class="ruby-keyword kw">end</span>
+283:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000250">
+                    
+                    <a name="M000250"></a><b>rails_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000250_source')" id="l_M000250_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L137" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000250_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 137</span>
+137:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rails_gemfile_entry</span>
+138:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dev?</span>
+139:           <span class="ruby-value str">&quot;gem 'rails',     :path =&gt; '\#{Rails::Generators::RAILS_DEV_PATH}'\ngem 'journey',   :git =&gt; 'git://github.com/rails/journey.git'\ngem 'arel',      :git =&gt; 'git://github.com/rails/arel.git', :branch =&gt; '3-0-stable'\n&quot;</span>.<span class="ruby-identifier">strip_heredoc</span>
+140:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">edge?</span>
+141:           <span class="ruby-value str">&quot;gem 'rails',     :git =&gt; 'git://github.com/rails/rails.git', :branch =&gt; '3-2-stable'\ngem 'journey',   :git =&gt; 'git://github.com/rails/journey.git'\ngem 'arel',      :git =&gt; 'git://github.com/rails/arel.git', :branch =&gt; '3-0-stable'\n&quot;</span>.<span class="ruby-identifier">strip_heredoc</span>
+142:         <span class="ruby-keyword kw">else</span>
+143:           <span class="ruby-value str">&quot;gem 'rails', '\#{Rails::VERSION::STRING}'\n\n# Bundle edge Rails instead:\n# gem 'rails', :git =&gt; 'git://github.com/rails/rails.git'\n&quot;</span>.<span class="ruby-identifier">strip_heredoc</span>
+144:         <span class="ruby-keyword kw">end</span>
+145:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000253">
+                    
+                    <a name="M000253"></a><b>ruby_debugger_gemfile_entry</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000253_source')" id="l_M000253_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L190" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000253_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 190</span>
+190:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ruby_debugger_gemfile_entry</span>
+191:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value str">&quot;1.9&quot;</span>
+192:           <span class="ruby-value str">&quot;gem 'ruby-debug'&quot;</span>
+193:         <span class="ruby-keyword kw">else</span>
+194:           <span class="ruby-value str">&quot;gem 'debugger'&quot;</span>
+195:         <span class="ruby-keyword kw">end</span>
+196:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000258">
+                    
+                    <a name="M000258"></a><b>run_bundle</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000258_source')" id="l_M000258_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L262" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000258_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 262</span>
+262:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_bundle</span>
+263:         <span class="ruby-identifier">bundle_command</span>(<span class="ruby-value str">'install'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_gemfile</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_bundle</span>]
+264:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000246">
+                    
+                    <a name="M000246"></a><b>set_default_accessors!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000246_source')" id="l_M000246_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/9bbdceb34d33aa31567447e43b5fb5ea638e14fa/railties/lib/rails/generators/app_base.rb#L114" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000246_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/app_base.rb, line 114</span>
+114:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_default_accessors!</span>
+115:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rails_template</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>]
+116:           <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^https?:\/\//</span>
+117:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>]
+118:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>
+119:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>], <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>)
+120:           <span class="ruby-keyword kw">else</span>
+121:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template</span>]
+122:         <span class="ruby-keyword kw">end</span>
+123:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

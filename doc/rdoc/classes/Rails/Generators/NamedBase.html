@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Rails::Generators::NamedBase</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Rails::Generators::NamedBase 
+            
+                <span class="parent">&lt; 
+                    
+                    Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/railties/lib/rails/generators/named_base_rb.html">railties/lib/rails/generators/named_base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000118">application_name</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000122">check_class_collision</a>,</li>
+                
+                <li><a href="#M000107">class_name</a>,</li>
+                
+                <li><a href="#M000103">class_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000102">file_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000108">human_name</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000110">i18n_scope</a>,</li>
+                
+                <li><a href="#M000096">indent</a>,</li>
+                
+                <li><a href="#M000113">index_helper</a>,</li>
+                
+                <li><a href="#M000098">inside_template</a>,</li>
+                
+                <li><a href="#M000099">inside_template?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000123">key_value</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000095">module_namespacing</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000100">namespace</a>,</li>
+                
+                <li><a href="#M000101">namespaced?</a>,</li>
+                
+                <li><a href="#M000106">namespaced_class_path</a>,</li>
+                
+                <li><a href="#M000105">namespaced_file_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000116">plural_file_name</a>,</li>
+                
+                <li><a href="#M000109">plural_name</a>,</li>
+                
+                <li><a href="#M000115">plural_table_name</a>,</li>
+                
+                <li><a href="#M000121">pluralize_table_names?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000104">regular_class_path</a>,</li>
+                
+                <li><a href="#M000117">route_url</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000114">singular_table_name</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000111">table_name</a>,</li>
+                
+                <li><a href="#M000094">template</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000112">uncountable?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>W</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000097">wrap_with_namespace</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>file_name</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000122">
+                    
+                    <a name="M000122"></a><b>check_class_collision</b>(options={})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Add a class collisions name to be checked on class initialization. You can
+supply a hash with a :prefix or :suffix to be tested.
+</p>
+<h4>Examples</h4>
+<pre>
+  check_class_collision :suffix =&gt; &quot;Observer&quot;
+</pre>
+<p>
+If the generator is invoked with class name Admin, it will check for the
+presence of &#8220;AdminObserver&#8221;.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000122_source')" id="l_M000122_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L179" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000122_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 179</span>
+179:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">check_class_collision</span>(<span class="ruby-identifier">options</span>={})
+180:           <span class="ruby-identifier">define_method</span> <span class="ruby-identifier">:check_class_collision</span> <span class="ruby-keyword kw">do</span>
+181:             <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:controller_class_name</span>) <span class="ruby-comment cmt"># for ScaffoldBase</span>
+182:               <span class="ruby-identifier">controller_class_name</span>
+183:             <span class="ruby-keyword kw">else</span>
+184:               <span class="ruby-identifier">class_name</span>
+185:             <span class="ruby-keyword kw">end</span>
+186: 
+187:             <span class="ruby-identifier">class_collisions</span> <span class="ruby-node">&quot;#{options[:prefix]}#{name}#{options[:suffix]}&quot;</span>
+188:           <span class="ruby-keyword kw">end</span>
+189:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000094">
+                    
+                    <a name="M000094"></a><b>template</b>(source, *args, &amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000094_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 25</span>
+25:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">template</span>(<span class="ruby-identifier">source</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+26:           <span class="ruby-identifier">inside_template</span> <span class="ruby-keyword kw">do</span>
+27:             <span class="ruby-keyword kw">super</span>
+28:           <span class="ruby-keyword kw">end</span>
+29:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Protected methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000118">
+                    
+                    <a name="M000118"></a><b>application_name</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Tries to retrieve the application name or simple return application.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000118_source')" id="l_M000118_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L144" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000118_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 144</span>
+144:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">application_name</span>
+145:           <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">Rails</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">application</span>
+146:             <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'::'</span>).<span class="ruby-identifier">first</span>.<span class="ruby-identifier">underscore</span>
+147:           <span class="ruby-keyword kw">else</span>
+148:             <span class="ruby-value str">&quot;application&quot;</span>
+149:           <span class="ruby-keyword kw">end</span>
+150:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000107">
+                    
+                    <a name="M000107"></a><b>class_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L96" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000107_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 96</span>
+96:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">class_name</span>
+97:           (<span class="ruby-identifier">class_path</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">file_name</span>]).<span class="ruby-identifier">map!</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">camelize</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'::'</span>)
+98:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000103">
+                    
+                    <a name="M000103"></a><b>class_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000103_source')" id="l_M000103_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000103_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 77</span>
+77:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">class_path</span>
+78:           <span class="ruby-identifier">inside_template?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">namespaced?</span> <span class="ruby-value">? </span><span class="ruby-identifier">regular_class_path</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">namespaced_class_path</span>
+79:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000102">
+                    
+                    <a name="M000102"></a><b>file_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000102_source')" id="l_M000102_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000102_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 73</span>
+73:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_path</span>
+74:           <span class="ruby-ivar">@file_path</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">class_path</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">file_name</span>]).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'/'</span>)
+75:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000108">
+                    
+                    <a name="M000108"></a><b>human_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L100" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000108_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 100</span>
+100:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">human_name</span>
+101:           <span class="ruby-ivar">@human_name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">singular_name</span>.<span class="ruby-identifier">humanize</span>
+102:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000110">
+                    
+                    <a name="M000110"></a><b>i18n_scope</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000110_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 108</span>
+108:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">i18n_scope</span>
+109:           <span class="ruby-ivar">@i18n_scope</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file_path</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'/'</span>, <span class="ruby-value str">'.'</span>)
+110:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000096">
+                    
+                    <a name="M000096"></a><b>indent</b>(content, multiplier = 2)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000096_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 44</span>
+44:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">indent</span>(<span class="ruby-identifier">content</span>, <span class="ruby-identifier">multiplier</span> = <span class="ruby-value">2</span>)
+45:           <span class="ruby-identifier">spaces</span> = <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">multiplier</span>
+46:           <span class="ruby-identifier">content</span> = <span class="ruby-identifier">content</span>.<span class="ruby-identifier">each_line</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{spaces}#{line}&quot;</span> }.<span class="ruby-identifier">join</span>
+47:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000113">
+                    
+                    <a name="M000113"></a><b>index_helper</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000113_source')" id="l_M000113_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L123" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000113_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 123</span>
+123:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_helper</span>
+124:           <span class="ruby-identifier">uncountable?</span> <span class="ruby-value">? </span><span class="ruby-node">&quot;#{plural_table_name}_index&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">plural_table_name</span>
+125:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000098">
+                    
+                    <a name="M000098"></a><b>inside_template</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000098_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 54</span>
+54:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inside_template</span>
+55:           <span class="ruby-ivar">@inside_template</span> = <span class="ruby-keyword kw">true</span>
+56:           <span class="ruby-keyword kw">yield</span>
+57:         <span class="ruby-keyword kw">ensure</span>
+58:           <span class="ruby-ivar">@inside_template</span> = <span class="ruby-keyword kw">false</span>
+59:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000099">
+                    
+                    <a name="M000099"></a><b>inside_template?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000099_source')" id="l_M000099_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000099_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 61</span>
+61:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inside_template?</span>
+62:           <span class="ruby-ivar">@inside_template</span>
+63:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000123">
+                    
+                    <a name="M000123"></a><b>key_value</b>(key, value)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns Ruby 1.9 style key-value pair if current code is running on Ruby
+1.9.x. Returns the old-style (with hash rocket) otherwise.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000123_source')" id="l_M000123_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L193" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000123_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 193</span>
+193:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_value</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+194:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:old_style_hash</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value str">'1.9'</span>
+195:             <span class="ruby-node">&quot;:#{key} =&gt; #{value}&quot;</span>
+196:           <span class="ruby-keyword kw">else</span>
+197:             <span class="ruby-node">&quot;#{key}: #{value}&quot;</span>
+198:           <span class="ruby-keyword kw">end</span>
+199:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000095">
+                    
+                    <a name="M000095"></a><b>module_namespacing</b>(&amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Wrap block with namespace of current application if namespace exists and is
+not skipped
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000095_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 38</span>
+38:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">module_namespacing</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+39:           <span class="ruby-identifier">content</span> = <span class="ruby-identifier">capture</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+40:           <span class="ruby-identifier">content</span> = <span class="ruby-identifier">wrap_with_namespace</span>(<span class="ruby-identifier">content</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespaced?</span>
+41:           <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">content</span>)
+42:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000100">
+                    
+                    <a name="M000100"></a><b>namespace</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000100_source')" id="l_M000100_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000100_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 65</span>
+65:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespace</span>
+66:           <span class="ruby-constant">Rails</span><span class="ruby-operator">::</span><span class="ruby-constant">Generators</span>.<span class="ruby-identifier">namespace</span>
+67:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000101">
+                    
+                    <a name="M000101"></a><b>namespaced?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000101_source')" id="l_M000101_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000101_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 69</span>
+69:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespaced?</span>
+70:           <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:skip_namespace</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">namespace</span>
+71:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000106">
+                    
+                    <a name="M000106"></a><b>namespaced_class_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000106_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 89</span>
+89:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespaced_class_path</span>
+90:           <span class="ruby-ivar">@namespaced_class_path</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+91:             <span class="ruby-identifier">namespace_path</span> = <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;::&quot;</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">underscore</span> }
+92:             <span class="ruby-identifier">namespace_path</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@class_path</span>
+93:           <span class="ruby-keyword kw">end</span>
+94:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000105">
+                    
+                    <a name="M000105"></a><b>namespaced_file_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L85" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000105_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 85</span>
+85:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespaced_file_path</span>
+86:           <span class="ruby-ivar">@namespaced_file_path</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">namespaced_class_path</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;/&quot;</span>)
+87:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000116">
+                    
+                    <a name="M000116"></a><b>plural_file_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000116_source')" id="l_M000116_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L135" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000116_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 135</span>
+135:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">plural_file_name</span>
+136:           <span class="ruby-ivar">@plural_file_name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">file_name</span>.<span class="ruby-identifier">pluralize</span>
+137:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000109">
+                    
+                    <a name="M000109"></a><b>plural_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L104" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000109_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 104</span>
+104:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">plural_name</span>
+105:           <span class="ruby-ivar">@plural_name</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">singular_name</span>.<span class="ruby-identifier">pluralize</span>
+106:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000115">
+                    
+                    <a name="M000115"></a><b>plural_table_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000115_source')" id="l_M000115_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L131" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000115_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 131</span>
+131:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">plural_table_name</span>
+132:           <span class="ruby-ivar">@plural_table_name</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">pluralize_table_names?</span> <span class="ruby-value">? </span><span class="ruby-identifier">table_name</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">table_name</span>.<span class="ruby-identifier">pluralize</span>)
+133:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000121">
+                    
+                    <a name="M000121"></a><b>pluralize_table_names?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000121_source')" id="l_M000121_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L165" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000121_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 165</span>
+165:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pluralize_table_names?</span>
+166:           <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>) <span class="ruby-operator">||</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">pluralize_table_names</span>
+167:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000104">
+                    
+                    <a name="M000104"></a><b>regular_class_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L81" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000104_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 81</span>
+81:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">regular_class_path</span>
+82:           <span class="ruby-ivar">@class_path</span>
+83:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000117">
+                    
+                    <a name="M000117"></a><b>route_url</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000117_source')" id="l_M000117_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L139" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000117_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 139</span>
+139:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">route_url</span>
+140:           <span class="ruby-ivar">@route_url</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">class_path</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">dname</span><span class="ruby-operator">|</span> <span class="ruby-value str">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dname</span>  }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">plural_file_name</span>
+141:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000114">
+                    
+                    <a name="M000114"></a><b>singular_table_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000114_source')" id="l_M000114_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L127" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000114_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 127</span>
+127:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">singular_table_name</span>
+128:           <span class="ruby-ivar">@singular_table_name</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">pluralize_table_names?</span> <span class="ruby-value">? </span><span class="ruby-identifier">table_name</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">table_name</span>)
+129:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000111">
+                    
+                    <a name="M000111"></a><b>table_name</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000111_source')" id="l_M000111_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L112" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000111_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 112</span>
+112:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_name</span>
+113:           <span class="ruby-ivar">@table_name</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+114:             <span class="ruby-identifier">base</span> = <span class="ruby-identifier">pluralize_table_names?</span> <span class="ruby-value">? </span><span class="ruby-identifier">plural_name</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">singular_name</span>
+115:             (<span class="ruby-identifier">class_path</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">base</span>]).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'_'</span>)
+116:           <span class="ruby-keyword kw">end</span>
+117:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000112">
+                    
+                    <a name="M000112"></a><b>uncountable?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000112_source')" id="l_M000112_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L119" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000112_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 119</span>
+119:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uncountable?</span>
+120:           <span class="ruby-identifier">singular_name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">plural_name</span>
+121:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000097">
+                    
+                    <a name="M000097"></a><b>wrap_with_namespace</b>(content)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/b0f8355d2813c375bf9242071131e8c5a350bcf0/railties/lib/rails/generators/named_base.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000097_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File railties/lib/rails/generators/named_base.rb, line 49</span>
+49:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wrap_with_namespace</span>(<span class="ruby-identifier">content</span>)
+50:           <span class="ruby-identifier">content</span> = <span class="ruby-identifier">indent</span>(<span class="ruby-identifier">content</span>).<span class="ruby-identifier">chomp</span>
+51:           <span class="ruby-node">&quot;module #{namespace.name}\n#{content}\nend\n&quot;</span>
+52:         <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>AbstractController::Base</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            AbstractController::Base 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/abstract_controller/base_rb.html">actionpack/lib/abstract_controller/base.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<tt>AbstractController::Base</tt> is a low-level API. Nobody should be
+using it directly, and subclasses (like <a
+href="../ActionController/Base.html">ActionController::Base</a>) are
+expected to provide their own <tt>render</tt> method, since rendering means
+different things depending on the context.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001663">abstract!</a>,</li>
+                
+                <li><a href="#M001672">action_methods</a>,</li>
+                
+                <li><a href="#M001666">action_methods</a>,</li>
+                
+                <li><a href="#M001673">available_action?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001667">clear_action_methods!</a>,</li>
+                
+                <li><a href="#M001671">controller_path</a>,</li>
+                
+                <li><a href="#M001668">controller_path</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001665">hidden_actions</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001664">internal_methods</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001669">method_added</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001670">process</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Rails.html">Rails</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>abstract</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001663">
+                    
+                    <a name="M001663"></a><b>abstract!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Define a controller as abstract. See <a
+href="Base.html#M001664">internal_methods</a> for more details.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001663_source')" id="l_M001663_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001663_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 29</span>
+29:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">abstract!</span>
+30:         <span class="ruby-ivar">@abstract</span> = <span class="ruby-keyword kw">true</span>
+31:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001666">
+                    
+                    <a name="M001666"></a><b>action_methods</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A list of method names that should be considered actions. This includes all
+public instance methods on a controller, less any internal methods (see <a
+href="Base.html#M001664">internal_methods</a>), adding back in any methods
+that are internal, but still exist on the class itself. Finally, <a
+href="Base.html#M001665">hidden_actions</a> are removed.
+</p>
+<h4>Returns</h4>
+<ul>
+<li><tt>array</tt> - A list of all methods that should be considered actions.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001666_source')" id="l_M001666_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001666_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 63</span>
+63:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">action_methods</span>
+64:         <span class="ruby-ivar">@action_methods</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+65:           <span class="ruby-comment cmt"># All public instance methods of this class, including ancestors</span>
+66:           <span class="ruby-identifier">methods</span> = (<span class="ruby-identifier">public_instance_methods</span>(<span class="ruby-keyword kw">true</span>) <span class="ruby-operator">-</span>
+67:             <span class="ruby-comment cmt"># Except for public instance methods of Base and its ancestors</span>
+68:             <span class="ruby-identifier">internal_methods</span> <span class="ruby-operator">+</span>
+69:             <span class="ruby-comment cmt"># Be sure to include shadowed public instance methods of this class</span>
+70:             <span class="ruby-identifier">public_instance_methods</span>(<span class="ruby-keyword kw">false</span>)).<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">to_s</span> } <span class="ruby-operator">-</span>
+71:             <span class="ruby-comment cmt"># And always exclude explicitly hidden actions</span>
+72:             <span class="ruby-identifier">hidden_actions</span>.<span class="ruby-identifier">to_a</span>
+73: 
+74:           <span class="ruby-comment cmt"># Clear out AS callback method pollution</span>
+75:           <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span> <span class="ruby-identifier">method</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/_one_time_conditions/</span> }
+76:         <span class="ruby-keyword kw">end</span>
+77:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001667">
+                    
+                    <a name="M001667"></a><b>clear_action_methods!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+<a href="Base.html#M001666">action_methods</a> are cached and there is
+sometimes need to refresh them. clear_action_methods! allows you to do
+that, so next time you run <a href="Base.html#M001666">action_methods</a>,
+they will be recalculated
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001667_source')" id="l_M001667_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001667_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 82</span>
+82:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_action_methods!</span>
+83:         <span class="ruby-ivar">@action_methods</span> = <span class="ruby-keyword kw">nil</span>
+84:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001668">
+                    
+                    <a name="M001668"></a><b>controller_path</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the full controller name, underscored, without the ending
+Controller. For instance, MyApp::MyPostsController would return
+&#8220;my_app/my_posts&#8220; for controller_name.
+</p>
+<h4>Returns</h4>
+<ul>
+<li><tt>string</tt>
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001668_source')" id="l_M001668_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001668_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 92</span>
+92:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">controller_path</span>
+93:         <span class="ruby-ivar">@controller_path</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/Controller$/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">underscore</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">anonymous?</span>
+94:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001665">
+                    
+                    <a name="M001665"></a><b>hidden_actions</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The list of hidden actions to an empty array. Defaults to an empty array.
+This can be modified by other modules or subclasses to specify particular
+actions as hidden.
+</p>
+<h4>Returns</h4>
+<ul>
+<li><tt>array</tt> - An array of method names that should not be considered
+actions.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001665_source')" id="l_M001665_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001665_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 51</span>
+51:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hidden_actions</span>
+52:         []
+53:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001664">
+                    
+                    <a name="M001664"></a><b>internal_methods</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A list of all internal methods for a controller. This finds the first
+abstract superclass of a controller, and gets a list of all public instance
+methods on that abstract class. Public instance methods of a controller
+would normally be considered action methods, so methods declared on
+abstract classes are being removed. (<a
+href="../ActionController/Metal.html">ActionController::Metal</a> and <a
+href="../ActionController/Base.html">ActionController::Base</a> are defined
+as abstract)
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001664_source')" id="l_M001664_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001664_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 39</span>
+39:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">internal_methods</span>
+40:         <span class="ruby-identifier">controller</span> = <span class="ruby-keyword kw">self</span>
+41:         <span class="ruby-identifier">controller</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">superclass</span> <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">abstract?</span>
+42:         <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">public_instance_methods</span>(<span class="ruby-keyword kw">true</span>)
+43:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001669">
+                    
+                    <a name="M001669"></a><b>method_added</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001669_source')" id="l_M001669_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L96" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001669_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 96</span>
+96:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_added</span>(<span class="ruby-identifier">name</span>)
+97:         <span class="ruby-keyword kw">super</span>
+98:         <span class="ruby-identifier">clear_action_methods!</span>
+99:       <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001672">
+                    
+                    <a name="M001672"></a><b>action_methods</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001672_source')" id="l_M001672_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L129" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001672_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 129</span>
+129:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">action_methods</span>
+130:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">action_methods</span>
+131:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001673">
+                    
+                    <a name="M001673"></a><b>available_action?</b>(action_name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns true if a method for the action is available and can be dispatched,
+false otherwise.
+</p>
+<p>
+Notice that <tt>action_methods.include?(&quot;foo&quot;)</tt> may return
+false and <tt>available_action?(&quot;foo&quot;)</tt> returns true because
+available action consider actions that are also available through other
+means, for example, implicit render ones.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001673_source')" id="l_M001673_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001673_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 140</span>
+140:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">available_action?</span>(<span class="ruby-identifier">action_name</span>)
+141:       <span class="ruby-identifier">method_for_action</span>(<span class="ruby-identifier">action_name</span>).<span class="ruby-identifier">present?</span>
+142:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001671">
+                    
+                    <a name="M001671"></a><b>controller_path</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Delegates to the class&#8217; <a
+href="Base.html#M001668">controller_path</a>
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001671_source')" id="l_M001671_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L125" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001671_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 125</span>
+125:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">controller_path</span>
+126:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">controller_path</span>
+127:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001670">
+                    
+                    <a name="M001670"></a><b>process</b>(action, *args)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Calls the action going through the entire action dispatch stack.
+</p>
+<p>
+The actual method that is called is determined by calling <a
+href="Base.html#M001679">method_for_action</a>. If no method can handle the
+action, then an <a href="ActionNotFound.html">ActionNotFound</a> error is
+raised.
+</p>
+<h4>Returns</h4>
+<ul>
+<li><tt>self</tt>
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001670_source')" id="l_M001670_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/fcdb5dc55729f4939e9a5064dfee8eef2dec4316/actionpack/lib/abstract_controller/base.rb#L112" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001670_source" class="dyn-source">
+                        <pre>     <span class="ruby-comment cmt"># File actionpack/lib/abstract_controller/base.rb, line 112</span>
+112:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">action</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+113:       <span class="ruby-ivar">@_action_name</span> = <span class="ruby-identifier">action_name</span> = <span class="ruby-identifier">action</span>.<span class="ruby-identifier">to_s</span>
+114: 
+115:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">action_name</span> = <span class="ruby-identifier">method_for_action</span>(<span class="ruby-identifier">action_name</span>)
+116:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActionNotFound</span>, <span class="ruby-node">&quot;The action '#{action}' could not be found for #{self.class.name}&quot;</span>
+117:       <span class="ruby-keyword kw">end</span>
+118: 
+119:       <span class="ruby-ivar">@_response_body</span> = <span class="ruby-keyword kw">nil</span>
+120: 
+121:       <span class="ruby-identifier">process_action</span>(<span class="ruby-identifier">action_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+122:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

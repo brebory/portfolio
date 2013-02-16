@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Reloader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::Reloader 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_dispatch/middleware/reloader_rb.html">actionpack/lib/action_dispatch/middleware/reloader.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+<a href="Reloader.html">ActionDispatch::Reloader</a> provides prepare and
+cleanup callbacks, intended to assist with code reloading during
+development.
+</p>
+<p>
+Prepare callbacks are run before each request, and cleanup callbacks after
+each request. In this respect they are analogs of
+ActionDispatch::Callback&#8217;s before and after callbacks. However,
+cleanup callbacks are not called until the request is fully complete
+&#8212; that is, after close has been called on the response body. This is
+important for streaming responses such as the following:
+</p>
+<pre>
+    self.response_body = lambda { |response, output|
+      # code here which refers to application models
+    }
+</pre>
+<p>
+Cleanup callbacks will not be called until after the response_body lambda
+is evaluated, ensuring that it can refer to application models and other
+classes before they are unloaded.
+</p>
+<p>
+By default, <a href="Reloader.html">ActionDispatch::Reloader</a> is
+included in the middleware stack only in the development environment;
+specifically, when config.cache_classes is false. <a
+href="Callbacks.html">Callbacks</a> may be registered even when it is not
+included in the middleware stack, but are executed only when +<a
+href="Reloader.html#M002249">ActionDispatch::Reloader.prepare!</a>+ or +<a
+href="Reloader.html#M002250">ActionDispatch::Reloader.cleanup!</a>+ are
+called manually.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002252">call</a>,</li>
+                
+                <li><a href="#M002250">cleanup!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002251">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002249">prepare!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M002248">to_cleanup</a>,</li>
+                
+                <li><a href="#M002247">to_prepare</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Rails.html">Rails</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002250">
+                    
+                    <a name="M002250"></a><b>cleanup!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Execute all cleanup callbacks.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002250_source')" id="l_M002250_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002250_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 52</span>
+52:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cleanup!</span>
+53:       <span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>).<span class="ruby-identifier">cleanup!</span>
+54:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002251">
+                    
+                    <a name="M002251"></a><b>new</b>(app, condition=nil)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002251_source')" id="l_M002251_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002251_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 56</span>
+56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">condition</span>=<span class="ruby-keyword kw">nil</span>)
+57:       <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+58:       <span class="ruby-ivar">@condition</span> = <span class="ruby-identifier">condition</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-keyword kw">true</span> }
+59:       <span class="ruby-ivar">@validated</span> = <span class="ruby-keyword kw">true</span>
+60:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002249">
+                    
+                    <a name="M002249"></a><b>prepare!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Execute all prepare callbacks.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002249_source')" id="l_M002249_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002249_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">prepare!</span>
+48:       <span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">nil</span>).<span class="ruby-identifier">prepare!</span>
+49:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002248">
+                    
+                    <a name="M002248"></a><b>to_cleanup</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Add a cleanup callback. Cleanup callbacks are run after each request is
+complete (after close is called on the response body).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002248_source')" id="l_M002248_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002248_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 42</span>
+42:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_cleanup</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+43:       <span class="ruby-identifier">set_callback</span>(<span class="ruby-identifier">:cleanup</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+44:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M002247">
+                    
+                    <a name="M002247"></a><b>to_prepare</b>(*args, &amp;block)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Add a prepare callback. Prepare callbacks are run before each request,
+prior to ActionDispatch::Callback&#8217;s before callbacks.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002247_source')" id="l_M002247_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002247_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_prepare</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+37:       <span class="ruby-identifier">set_callback</span>(<span class="ruby-identifier">:prepare</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+38:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M002252">
+                    
+                    <a name="M002252"></a><b>call</b>(env)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M002252_source')" id="l_M002252_source">show</a>
+                        
+                        | <a href="http://github.com/rails/rails/blob/c159b01b85ac3955c53cd6b8a62d5d90ee973cfb/actionpack/lib/action_dispatch/middleware/reloader.rb#L62" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M002252_source" class="dyn-source">
+                        <pre>    <span class="ruby-comment cmt"># File actionpack/lib/action_dispatch/middleware/reloader.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+63:       <span class="ruby-ivar">@validated</span> = <span class="ruby-ivar">@condition</span>.<span class="ruby-identifier">call</span>
+64:       <span class="ruby-identifier">prepare!</span>
+65:       <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+66:       <span class="ruby-identifier">response</span>[<span class="ruby-value">2</span>] = <span class="ruby-constant">ActionDispatch</span><span class="ruby-operator">::</span><span class="ruby-constant">BodyProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value">2</span>]) { <span class="ruby-identifier">cleanup!</span> }
+67:       <span class="ruby-identifier">response</span>
+68:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span>
+69:       <span class="ruby-identifier">cleanup!</span>
+70:       <span class="ruby-identifier">raise</span>
+71:     <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    
